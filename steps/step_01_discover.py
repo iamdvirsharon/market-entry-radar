@@ -146,8 +146,48 @@ def _generate_queries(category: str, custom_queries: list = None) -> list[str]:
     return unique
 
 
-def _call_serp_api(api_key: str, zone: str, search_url: str) -> dict | None:
-    """Make a single SERP API call."""
+# HTTP status to human-readable error
+_SERP_ERROR_HINTS = {
+    401: "Invalid API key. Your Bright Data API token was rejected.",
+    403: "Zone not authorized. The zone name does not exist or is not enabled.",
+    407: "Proxy auth failed. Zone credentials may be wrong.",
+    429: "Rate limited. Too many requests -- try increasing request_delay.",
+    502: "Bad gateway. Bright Data proxy returned an error (usually temporary).",
+    503: "Service unavailable. Bright Data is temporarily down.",
+}
+
+
+def _format_serp_error(first_error: dict, api_key: str, zone: str, total_failures: int) -> str:
+    """Build a structured, copy-pasteable error block."""
+    status = first_error["status_code"]
+    masked_key = api_key[:4] + "****" + api_key[-4:] if len(api_key) > 8 else "****"
+    hint = _SERP_ERROR_HINTS.get(status, f"Unexpected HTTP {status} error.")
+
+    return (
+        "\n"
+        "============================================================\n"
+        "  SERP API ERROR -- All queries failed\n"
+        "============================================================\n"
+        "\n"
+        f"  Error:    {hint}\n"
+        f"  HTTP:     {status}\n"
+        f"  API Key:  {masked_key}\n"
+        f"  Zone:     {zone}\n"
+        f"  Failed:   {total_failures} requests\n"
+        f"  Response: {first_error['body'][:300]}\n"
+        "\n"
+        "  --- Fix it ---\n"
+        "  1. Check your API key: https://brightdata.com/cp/setting/api_token\n"
+        "  2. Check your SERP zone exists: https://brightdata.com/cp/zones\n"
+        "  3. Make sure the zone type is 'SERP API' (not Web Unlocker)\n"
+        "\n"
+        "  Copy this entire block and paste it to an AI assistant for help.\n"
+        "============================================================\n"
+    )
+
+
+def _call_serp_api(api_key: str, zone: str, search_url: str) -> dict:
+    """Make a single SERP API call. Returns results dict or error dict."""
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
@@ -172,11 +212,17 @@ def _call_serp_api(api_key: str, zone: str, search_url: str) -> dict | None:
                 # Some engines return non-JSON -- try to parse organic results
                 return {"raw_html": response.text[:5000]}
         else:
-            console.print(f"  [dim]SERP API returned {response.status_code}[/dim]")
-            return None
+            return {
+                "_error": True,
+                "status_code": response.status_code,
+                "body": response.text[:500],
+            }
     except requests.exceptions.RequestException as e:
-        console.print(f"  [dim]SERP request failed: {e}[/dim]")
-        return None
+        return {
+            "_error": True,
+            "status_code": 0,
+            "body": str(e),
+        }
 
 
 def _extract_urls_from_results(results: dict) -> list[dict]:
@@ -290,6 +336,9 @@ def run(config: dict, env: dict) -> dict:
     all_results = []
     competitor_frequency = {}  # domain -> count of appearances
     competitor_info = {}  # domain -> best title/description
+    api_successes = 0
+    api_failures = 0
+    api_errors = []  # store first few errors for diagnostics
 
     total_calls = len(queries) * len(engines)
 
@@ -307,7 +356,12 @@ def run(config: dict, env: dict) -> dict:
                 search_url = _build_search_url(engine_config, query)
                 results = _call_serp_api(api_key, zone, search_url)
 
-                if results:
+                if results.get("_error"):
+                    api_failures += 1
+                    if len(api_errors) < 3:  # keep first 3 errors
+                        api_errors.append(results)
+                else:
+                    api_successes += 1
                     urls = _extract_urls_from_results(results)
                     for item in urls:
                         domain = _extract_domain(item["url"])
@@ -333,6 +387,17 @@ def run(config: dict, env: dict) -> dict:
 
                 progress.advance(task)
                 time.sleep(delay)
+
+    # Diagnostic: report API call results
+    console.print(f"\n  API calls: [bold]{api_successes}[/bold] succeeded, [bold]{api_failures}[/bold] failed out of {total_calls}")
+
+    if api_successes == 0 and api_failures > 0:
+        # ALL calls failed -- raise a structured error with diagnostics
+        raise RuntimeError(_format_serp_error(api_errors[0], api_key, zone, api_failures))
+
+    if api_failures > 0:
+        first = api_errors[0]
+        console.print(f"  [yellow]Warning: {api_failures} API calls failed (HTTP {first['status_code']}). Continuing with successful results.[/yellow]")
 
     # Rank competitors by frequency
     ranked = sorted(competitor_frequency.items(), key=lambda x: x[1], reverse=True)

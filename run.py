@@ -2,23 +2,13 @@
 """
 Market Entry Radar -- Regional GTM Intelligence Pipeline
 
-A 5-step workflow that produces 80% of a $200K market entry
-research package in under 2 hours. Powered by Bright Data + Claude.
-
 Usage:
     1. Copy .env.example to .env and add your API keys
-    2. Edit config.yaml with your product details and target market(s)
+    2. Edit config.yaml with your homepage URL and target market(s)
     3. Run: python run.py
 
 For the web UI (no CLI needed):
     python -m streamlit run app.py
-
-Steps:
-    1. DISCOVER -- Geo-targeted SERP queries across the RIGHT search engines
-    2. SCRAPE   -- Deep-read every local competitor via Web Unlocker
-    3. ANALYZE  -- Claude produces positioning matrix, pricing benchmark, content gaps
-    4. ENRICH   -- Layer market-specific intelligence (buyer behavior, regulations, culture)
-    5. DELIVER  -- Generate a complete Market Entry Brief
 
 Author: Dvir Sharon (https://www.linkedin.com/in/dvirsharon/)
 Powered by: Bright Data (https://brightdata.com) + Anthropic Claude
@@ -59,7 +49,7 @@ Powered by Bright Data + Claude[/dim]
 
 
 def load_config() -> dict:
-    """Load and validate config.yaml. Handles both old and new format."""
+    """Load and validate config.yaml."""
     config_path = PROJECT_ROOT / "config.yaml"
     if not config_path.exists():
         console.print("[red]Error: config.yaml not found. Copy config.yaml.example and edit it.[/red]")
@@ -72,20 +62,22 @@ def load_config() -> dict:
     if "target_markets" not in config and "target_market" in config:
         config["target_markets"] = [config["target_market"]]
     elif "target_markets" in config and "target_market" not in config:
-        # Set target_market to first market for any code that still reads it
         config["target_market"] = config["target_markets"][0]
 
-    # Validate required fields
-    required = [
-        ("product.description", config.get("product", {}).get("description")),
-        ("product.category", config.get("product", {}).get("category")),
-        ("product.homepage_url", config.get("product", {}).get("homepage_url")),
-        ("target_markets", config.get("target_markets")),
-    ]
+    # Ensure product dict has required keys (even if empty -- pipeline auto-detects)
+    product = config.setdefault("product", {})
+    product.setdefault("description", "")
+    product.setdefault("category", "")
+    product.setdefault("homepage_url", "")
+    product.setdefault("pricing_url", "")
 
-    missing = [name for name, val in required if not val]
-    if missing:
-        console.print(f"[red]Error: Missing required config fields: {', '.join(missing)}[/red]")
+    # Validate: homepage URL is required (everything else can be auto-detected)
+    if not product.get("homepage_url"):
+        console.print("[red]Error: product.homepage_url is required in config.yaml[/red]")
+        sys.exit(1)
+
+    if not config.get("target_markets"):
+        console.print("[red]Error: target_markets is required in config.yaml[/red]")
         sys.exit(1)
 
     return config
@@ -95,12 +87,8 @@ def load_env() -> dict:
     """Load and validate environment variables."""
     load_dotenv(PROJECT_ROOT / ".env")
 
-    required_vars = [
-        "BRIGHT_DATA_API_KEY",
-        "BRIGHT_DATA_SERP_ZONE",
-        "BRIGHT_DATA_UNLOCKER_ZONE",
-        "ANTHROPIC_API_KEY",
-    ]
+    # Required keys
+    required_vars = ["BRIGHT_DATA_API_KEY", "ANTHROPIC_API_KEY"]
 
     env = {}
     missing = []
@@ -112,9 +100,13 @@ def load_env() -> dict:
             env[var] = val
 
     if missing:
-        console.print(f"[red]Error: Missing environment variables: {', '.join(missing)}[/red]")
-        console.print("[dim]Copy .env.example to .env and fill in your API keys.[/dim]")
+        console.print(f"[red]Error: Missing required API keys: {', '.join(missing)}[/red]")
+        console.print("[dim]Copy .env.example to .env and add your API keys.[/dim]")
         sys.exit(1)
+
+    # Optional zone names with defaults
+    env["BRIGHT_DATA_SERP_ZONE"] = os.getenv("BRIGHT_DATA_SERP_ZONE", "serp_api1")
+    env["BRIGHT_DATA_UNLOCKER_ZONE"] = os.getenv("BRIGHT_DATA_UNLOCKER_ZONE", "web_unlocker1")
 
     return env
 
@@ -130,7 +122,11 @@ def main():
 
     start_time = time.time()
 
-    results = run_multi_market_pipeline(config, env)
+    try:
+        results = run_multi_market_pipeline(config, env)
+    except RuntimeError as e:
+        console.print(f"\n[red]{e}[/red]")
+        sys.exit(1)
 
     elapsed = time.time() - start_time
     minutes = int(elapsed // 60)

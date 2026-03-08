@@ -3,6 +3,7 @@ Market Entry Radar -- Core Pipeline Logic
 
 Reusable pipeline that can be called from both CLI (run.py) and Web UI (app.py).
 Supports single market or multi-market runs with cross-market comparison.
+Auto-detects product info from homepage URL if not provided.
 """
 
 import copy
@@ -20,6 +21,7 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from steps import (
+    step_00_detect,
     step_01_discover,
     step_02_scrape,
     step_03_analyze,
@@ -28,6 +30,23 @@ from steps import (
 )
 
 console = Console()
+
+
+def _wrap_step_error(step_num: int, step_name: str, error: Exception) -> RuntimeError:
+    """Wrap an unexpected exception with step context for debugging."""
+    return RuntimeError(
+        "\n"
+        "============================================================\n"
+        f"  PIPELINE ERROR -- Step {step_num} ({step_name}) failed\n"
+        "============================================================\n"
+        "\n"
+        f"  Error type: {type(error).__name__}\n"
+        f"  Error: {error}\n"
+        "\n"
+        "  This is likely a bug or a configuration issue.\n"
+        "  Copy this entire block and paste it to an AI assistant for help.\n"
+        "============================================================\n"
+    )
 
 
 def run_pipeline(
@@ -52,37 +71,94 @@ def run_pipeline(
         if progress_callback:
             progress_callback(step, message)
 
+    # STEP 0: AUTO-DETECT (if description or category missing)
+    product = config.get("product", {})
+    if not product.get("description") or not product.get("category"):
+        homepage = product.get("homepage_url", "")
+        if not homepage:
+            raise RuntimeError(
+                "Homepage URL is required. Provide a URL so the tool can "
+                "auto-detect your product, or fill in description and category manually."
+            )
+
+        _notify(0, f"[{market}] Auto-detecting product from homepage...")
+        try:
+            detected = step_00_detect.run(homepage, env)
+        except RuntimeError:
+            raise
+        except Exception as e:
+            raise _wrap_step_error(0, "DETECT", e) from e
+
+        if not product.get("description"):
+            config["product"]["description"] = detected["description"]
+        if not product.get("category"):
+            config["product"]["category"] = detected["category"]
+        _notify(0, f"[{market}] Detected: {detected.get('description', 'unknown')}")
+
     # STEP 1: DISCOVER
     _notify(1, f"[{market}] Discovering local competitors via geo-targeted SERP queries...")
-    discovery_data = step_01_discover.run(config, env)
+    try:
+        discovery_data = step_01_discover.run(config, env)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise _wrap_step_error(1, "DISCOVER", e) from e
 
     if not discovery_data["competitors"]:
-        raise RuntimeError(f"[{market}] No competitors discovered. Check your config and API keys.")
+        raise RuntimeError(
+            f"[{market}] No competitors discovered. "
+            f"All {discovery_data.get('queries_run', 0)} SERP queries returned zero results. "
+            f"Verify your product category '{config['product']['category']}' generates relevant queries, "
+            f"and check the SERP API zone configuration."
+        )
 
     _notify(1, f"[{market}] Discovered {len(discovery_data['competitors'])} competitors")
 
     # STEP 2: SCRAPE
     _notify(2, f"[{market}] Scraping competitor websites via Web Unlocker...")
-    scrape_data = step_02_scrape.run(config, env, discovery_data)
+    try:
+        scrape_data = step_02_scrape.run(config, env, discovery_data)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise _wrap_step_error(2, "SCRAPE", e) from e
 
     if scrape_data["success_count"] == 0:
-        raise RuntimeError(f"[{market}] No pages scraped successfully. Check your Bright Data zone config.")
+        raise RuntimeError(
+            f"[{market}] No pages scraped successfully. "
+            f"Check your Bright Data Web Unlocker zone configuration."
+        )
 
     _notify(2, f"[{market}] Scraped {scrape_data['success_count']} pages")
 
     # STEP 3: ANALYZE
     _notify(3, f"[{market}] Running Claude AI analysis (positioning, pricing, content gaps)...")
-    analysis_data = step_03_analyze.run(config, env, discovery_data, scrape_data)
+    try:
+        analysis_data = step_03_analyze.run(config, env, discovery_data, scrape_data)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise _wrap_step_error(3, "ANALYZE", e) from e
     _notify(3, f"[{market}] Analysis complete")
 
     # STEP 4: ENRICH
     _notify(4, f"[{market}] Enriching with market-specific intelligence...")
-    enrichment_data = step_04_enrich.run(config, env, analysis_data, scrape_data)
+    try:
+        enrichment_data = step_04_enrich.run(config, env, analysis_data, scrape_data)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise _wrap_step_error(4, "ENRICH", e) from e
     _notify(4, f"[{market}] Enrichment complete")
 
     # STEP 5: DELIVER
     _notify(5, f"[{market}] Generating Market Entry Brief...")
-    report_data = step_05_deliver.run(config, env, discovery_data, scrape_data, analysis_data, enrichment_data)
+    try:
+        report_data = step_05_deliver.run(config, env, discovery_data, scrape_data, analysis_data, enrichment_data)
+    except RuntimeError:
+        raise
+    except Exception as e:
+        raise _wrap_step_error(5, "DELIVER", e) from e
     _notify(5, f"[{market}] Report generated")
 
     return {
@@ -127,8 +203,7 @@ def run_multi_market_pipeline(
         """Create a progress callback scoped to a specific market."""
         def callback(step: int, message: str):
             if progress_callback:
-                # Scale progress: each market gets an equal share
-                overall_step = step  # Keep step number for status display
+                overall_step = step
                 prefix = f"[Market {market_idx + 1}/{total_markets}] "
                 progress_callback(overall_step, prefix + message)
         return callback
@@ -172,17 +247,18 @@ def run_multi_market_pipeline(
 def display_config_panel(config: dict):
     """Display the run configuration in a Rich panel (CLI only)."""
     markets = config.get("target_markets", [config.get("target_market", "unknown")])
-    category = config["product"]["category"]
+    description = config.get("product", {}).get("description", "(auto-detect from URL)")
+    category = config.get("product", {}).get("category", "(auto-detect from URL)")
 
     info_table = Table(show_header=False, box=None, padding=(0, 2))
     info_table.add_column(style="bold")
     info_table.add_column()
-    info_table.add_row("Product", config["product"]["description"])
-    info_table.add_row("Category", category)
+    info_table.add_row("Product", description or "(auto-detect from URL)")
+    info_table.add_row("Category", category or "(auto-detect from URL)")
     info_table.add_row("Target Markets", ", ".join(m.upper() for m in markets))
-    info_table.add_row("Homepage", config["product"]["homepage_url"])
-    info_table.add_row("Max Competitors", str(config["advanced"]["max_competitors"]))
-    info_table.add_row("Max Queries", str(config["advanced"]["max_queries"]))
+    info_table.add_row("Homepage", config.get("product", {}).get("homepage_url", "N/A"))
+    info_table.add_row("Max Competitors", str(config.get("advanced", {}).get("max_competitors", 15)))
+    info_table.add_row("Max Queries", str(config.get("advanced", {}).get("max_queries", 40)))
 
     console.print(Panel(info_table, title="[bold]Run Configuration[/bold]", border_style="cyan"))
 

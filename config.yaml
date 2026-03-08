@@ -1,18 +1,22 @@
 # ============================================================
 # MARKET ENTRY RADAR -- Configuration
 # ============================================================
-# Fill in your details below. This is the only file you need to edit.
+# Fill in your homepage URL and target market(s). That's it.
+# Description and category are auto-detected from your homepage.
 
 # YOUR PRODUCT
 product:
-  # What your product does (one sentence)
-  description: "Project management SaaS for B2B teams"
-  # Your product category (used for search queries)
-  category: "project management software"
-  # Your homepage URL (scraped for positioning comparison)
+  # Your homepage URL (REQUIRED -- the tool scrapes this to understand your product)
   homepage_url: "https://your-product.com"
-  # Your current pricing page URL (optional -- for pricing benchmark)
-  pricing_url: "https://your-product.com/pricing"
+
+  # Product description (OPTIONAL -- auto-detected from homepage if empty)
+  # description: "Project management SaaS for B2B teams"
+
+  # Product category (OPTIONAL -- auto-detected from homepage if empty)
+  # category: "project management software"
+
+  # Pricing page URL (OPTIONAL -- the tool tries /pricing automatically)
+  # pricing_url: "https://your-product.com/pricing"
 
 # TARGET MARKETS
 # Supported: japan, korea, australia, singapore, germany, uk, france, brazil

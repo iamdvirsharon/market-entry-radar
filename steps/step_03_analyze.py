@@ -13,9 +13,12 @@ import json
 import os
 from pathlib import Path
 
+import anthropic
 from anthropic import Anthropic
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
+
+from steps.error_utils import format_claude_error
 
 console = Console()
 
@@ -32,13 +35,16 @@ def _load_prompt(prompt_name: str) -> str:
 
 def _call_claude(client: Anthropic, model: str, system_prompt: str, user_content: str) -> str:
     """Make a Claude API call with structured prompts."""
-    response = client.messages.create(
-        model=model,
-        max_tokens=8192,
-        system=system_prompt,
-        messages=[{"role": "user", "content": user_content}],
-    )
-    return response.content[0].text
+    try:
+        response = client.messages.create(
+            model=model,
+            max_tokens=8192,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_content}],
+        )
+        return response.content[0].text
+    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
+        raise RuntimeError(format_claude_error(e, "Step 3: ANALYZE", model)) from e
 
 
 def _prepare_competitor_summary(scraped_data: dict) -> str:

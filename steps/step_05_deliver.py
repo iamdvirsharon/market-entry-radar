@@ -12,8 +12,11 @@ import os
 from datetime import datetime
 from pathlib import Path
 
+import anthropic
 from anthropic import Anthropic
 from rich.console import Console
+
+from steps.error_utils import format_claude_error
 
 console = Console()
 
@@ -250,19 +253,22 @@ SCRAPING DATA:
 
     console.print("  Generating report (this may take 30-60 seconds)...")
 
-    response = client.messages.create(
-        model=model,
-        max_tokens=16384,
-        system=REPORT_SYSTEM_PROMPT,
-        messages=[{
-            "role": "user",
-            "content": f"""Here is the complete analysis pipeline output. Synthesize this into the Market Entry Brief format described in your instructions.
+    try:
+        response = client.messages.create(
+            model=model,
+            max_tokens=16384,
+            system=REPORT_SYSTEM_PROMPT,
+            messages=[{
+                "role": "user",
+                "content": f"""Here is the complete analysis pipeline output. Synthesize this into the Market Entry Brief format described in your instructions.
 
 {full_context}
 
 Generate the full Market Entry Brief now.""",
-        }],
-    )
+            }],
+        )
+    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
+        raise RuntimeError(format_claude_error(e, "Step 5: DELIVER (report)", model)) from e
 
     report = response.content[0].text
 
@@ -420,19 +426,22 @@ def run_comparison(config: dict, env: dict, markets: list, all_results: dict) ->
 
     client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
 
-    response = client.messages.create(
-        model=model,
-        max_tokens=8192,
-        system=COMPARISON_SYSTEM_PROMPT,
-        messages=[{
-            "role": "user",
-            "content": f"""Here are the individual Market Entry Briefs for each market. Compare them and produce the Cross-Market Comparison.
+    try:
+        response = client.messages.create(
+            model=model,
+            max_tokens=8192,
+            system=COMPARISON_SYSTEM_PROMPT,
+            messages=[{
+                "role": "user",
+                "content": f"""Here are the individual Market Entry Briefs for each market. Compare them and produce the Cross-Market Comparison.
 
 {full_context}
 
 Generate the Cross-Market Comparison now.""",
-        }],
-    )
+            }],
+        )
+    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
+        raise RuntimeError(format_claude_error(e, "Step 5: DELIVER (comparison)", model)) from e
 
     comparison = response.content[0].text
 
