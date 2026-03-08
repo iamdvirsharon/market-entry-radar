@@ -1,0 +1,178 @@
+market: "Japan"
+
+overview: >
+  Japan is the world's third-largest economy and the second-largest SaaS market
+  in Asia. Only 34% of Japanese businesses currently use SaaS, representing
+  massive untapped potential. The market is growing at 11.72% annually through
+  2027. However, the buying process is dramatically different from the US --
+  consensus-driven, relationship-heavy, and documentation-intensive. Companies
+  that adapt thrive (Salesforce turned Japan into their second-largest market
+  at $18.1B). Companies that copy-paste their US playbook fail (eBay exited
+  in 2 years).
+
+search_landscape:
+  primary_engine: "Google (google.co.jp) -- 82%+ market share"
+  secondary_engines:
+    - "Yahoo Japan -- ~30% of search traffic, powered by Google's tech but with unique SERP features"
+    - "Yahoo Japan shows Yahoo Shopping results in SERPs -- important for comparison queries"
+  key_note: >
+    Both Google and Yahoo Japan matter. Keyword research requires understanding
+    three character sets: Kanji, Hiragana, and Katakana. Search queries involve
+    varied character combinations. Japanese websites tend to be more text-heavy
+    than Western sites.
+  seo_notes: >
+    "Conclusion first" content structure works well in Japan. State the main
+    point upfront with supporting details. Mobile-first is mandatory -- 80%+
+    mobile internet penetration.
+
+buyer_behavior:
+  decision_making: >
+    Consensus-based (ringi-seido). In companies with 3,000+ employees, more
+    than 50% have 11+ people involved in SaaS purchasing decisions. You cannot
+    sell to a single decision-maker. Every stakeholder must sign off.
+  sales_cycle: >
+    Enterprise deals routinely take 12+ months. For purchases over 100 million
+    yen (~$668,000), 47% require consideration periods exceeding one year.
+    Minimum 4-5 meetings just to build trust before any product discussion.
+  research_behavior: >
+    Japanese companies do extensive pre-engagement research. 29% spend most of
+    their time identifying which system is the best to solve the problem. 27%
+    spend most time determining the right vendor. They want certainty before
+    starting a sales conversation.
+  trust_signals: >
+    "Reliable" and "24/7 support" resonate more than "innovative" or "new."
+    Access to customer support is the most valued factor in onboarding (21%),
+    followed by personalized training (17%). Japanese buyers value stability
+    and long-term relationships over cutting-edge features.
+  plg_adoption: >
+    Product-led growth is rare in Japan. Most companies need to be convinced
+    to change processes -- they don't self-serve and adopt like US buyers.
+    Enterprise sales motion is the default path.
+
+pricing_norms:
+  preferred_model: "Annual contracts strongly preferred over monthly billing"
+  currency: "JPY (Japanese Yen)"
+  payment_methods: >
+    Cash still dominates: 64% of all transactions (2022). Credit cards handle
+    30.4% of private consumption. For B2B SaaS, bank transfer (furikomi) is
+    standard. Support for local payment methods is critical.
+  annual_vs_monthly: >
+    Japanese customers prefer longer commitments with stability over
+    month-to-month flexibility. 3 of top 5 local SaaS competitors in most
+    categories offer annual-only pricing.
+  price_sensitivity: >
+    Higher prices signal superior quality in Japan. Buyers are willing to pay
+    more for dependable, high-quality products. Localized pricing consistently
+    outperforms global pricing models. Do not race to the bottom.
+
+sales_process:
+  typical_cycle_length: "6-18 months for enterprise, 2-4 months for SMB"
+  stakeholders_involved: "11+ at large enterprises, 3-5 at SMB"
+  channel_preference: >
+    43% of IT product purchases happen through IT-related media and local
+    vendors. Direct sales accounts for only 24%. Partner and reseller channels
+    are not optional -- they are the primary revenue driver.
+  first_contact_method: >
+    Industry events, IT media publications, and partner referrals. Cold
+    outreach is significantly less effective than in the US. Warm introductions
+    through existing business networks (keiretsu) are the norm.
+
+content_preferences:
+  preferred_formats:
+    - "Detailed whitepapers and technical documentation"
+    - "Case studies with named Japanese customers"
+    - "Webinars and seminars (online and offline)"
+    - "Comparison guides (detailed feature-by-feature)"
+    - "Video tutorials with Japanese subtitles"
+  language_requirements: >
+    Japanese-only. English content is not consumed by the target buyer.
+    Translation must use consistent tone and formality -- mixed regional
+    dialects or casual-formal inconsistency damages trust. Slack tested 10-12
+    linguists per language before finding the right voice.
+  key_channels:
+    - "Content marketing (owned media)"
+    - "Nikkei and industry media placements"
+    - "Seminars and webinars"
+    - "Partner co-marketing"
+    - "LINE and social media"
+  content_depth: >
+    Japanese B2B buyers expect exhaustive documentation. Whitepapers, detailed
+    blog posts with in-depth practical advice, and comprehensive FAQ sections
+    are expected. Thin content damages credibility.
+
+regulatory:
+  data_protection: >
+    Act on the Protection of Personal Information (APPI). Amended in 2022 with
+    stricter consent requirements and mandatory breach notification within a
+    specific timeframe. Penalties include fines up to 100 million yen for
+    corporations.
+  data_residency: >
+    No strict data localization requirement, but cross-border data transfer
+    requires consent or adequate protection measures. Many enterprise buyers
+    prefer Japan-hosted infrastructure as a trust signal.
+  entity_requirements: >
+    Foreign companies can operate through a branch office (shiten) or
+    subsidiary (kabushiki kaisha/KK). KK is preferred for long-term market
+    commitment and customer trust.
+  tax_considerations: >
+    Consumption tax (shohizei) at 10%. Invoice system (qualified invoice
+    system) became mandatory October 2023 -- ensure compliance for B2B billing.
+
+cultural:
+  business_etiquette: >
+    Formal and hierarchical. Business cards (meishi) exchanged with both hands
+    and a bow. Meetings follow strict protocols. Punctuality is absolute.
+    First meetings are relationship-building, not deal-closing.
+  communication_style: >
+    Indirect communication. "We'll consider it" often means "no." Reading
+    between the lines is essential. Avoid confrontational or overly direct
+    sales language.
+  key_norms: >
+    Long-term relationship orientation. Companies invest years building trust
+    before large deals close. Switching costs are high because relationships
+    are the moat, not contracts.
+
+channel_strategy:
+  direct_vs_partner: >
+    Partner-first. Salesforce's Japan success was built on an ISV/partner
+    ecosystem. 43% of IT purchases flow through local vendors and IT media.
+    Hire a partner manager before scaling direct sales.
+  key_channels:
+    - "IT distributors (e.g., SoftBank Commerce, Otsuka Corporation)"
+    - "System integrators (NTT Data, Fujitsu, NEC)"
+    - "ISV partnerships"
+    - "Industry-specific resellers"
+  marketplace_presence: >
+    AWS Marketplace and local IT marketplace presence adds credibility.
+    Japanese enterprises increasingly discover SaaS through curated
+    marketplace listings.
+
+success_patterns:
+  - >
+    Salesforce entered Japan in 2000, hired Eiji Uda (former SoftBank Commerce
+    president with 20 years at IBM) as their first local leader. Built an
+    independent entity, not a US subsidiary. Won Japan Post (5,000 to 70,000
+    subscriptions). Japan became their second-largest market at $18.1B.
+  - >
+    Slack launched official Japanese version after testing 10-12 linguists to
+    get the voice right -- "respectful but not overly polite, like a helpful
+    colleague." Grew from 300,000 to 500,000 Japanese users in 6 months.
+    Japan became Slack's fastest-growing country globally.
+  - >
+    Microsoft Japan formed partnerships with Fujitsu, NTT, and Toyota.
+    Developed Japan-specific compliance solutions. Focused on long-term
+    contracts aligned with Japanese stability preferences.
+
+failure_patterns:
+  - >
+    eBay entered Japan in 2000, exited in 2002. Failed to recognize Yahoo
+    Auctions' dominance. Did not localize trust mechanisms. Ignored keiretsu
+    culture and customer service expectations.
+  - >
+    Uber failed to account for Japan's unionized taxi industry with strong
+    political connections. Regulatory barriers erected by industry leaders
+    with long-standing policymaker relationships. Should have pursued
+    partnership/licensing model from the start.
+  - >
+    Companies that hire a US expat as first local leader instead of a senior
+    local with deep industry connections consistently underperform.

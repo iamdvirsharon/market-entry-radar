@@ -1,0 +1,161 @@
+market: "Australia"
+
+overview: >
+  Australia is the easiest English-speaking entry point into APAC. Lower
+  competition than the US or UK, similar market maturity, and no language
+  barrier. Home to Atlassian and Canva, with a growing tech ecosystem centered
+  on Sydney and Melbourne. Australian SaaS valuations run 5-6x ARR vs. 8-10x
+  for comparable US companies. The domestic B2B market is real but smaller --
+  the value is often as an APAC beachhead.
+
+search_landscape:
+  primary_engine: "Google (google.com.au) -- dominant with 90%+ market share"
+  secondary_engines:
+    - "Bing -- small but growing, especially in enterprise environments using Microsoft stack"
+  key_note: >
+    Google dominates. SEO best practices largely mirror US/UK but local content
+    signals matter. .com.au domains rank better for local queries. Australian
+    English spelling conventions (optimise, colour) expected in content.
+  seo_notes: >
+    Local Australian case studies and references significantly boost
+    credibility. "Australia" or "Australian" in page titles helps local
+    ranking. Google My Business relevant for companies with local offices.
+
+buyer_behavior:
+  decision_making: >
+    Committee-based but less formal than Japan or Germany. Typically 3-5
+    stakeholders involved. Procurement is structured but pragmatic -- less
+    bureaucratic than APAC counterparts.
+  sales_cycle: >
+    2-4 months for enterprise, 2-6 weeks for SMB. Comparable to UK sales
+    velocity. Australian buyers move at a reasonable pace when they see value.
+  research_behavior: >
+    Similar to US -- Google search, peer recommendations, G2/Capterra reviews,
+    LinkedIn. Australian buyers are sophisticated and well-informed. They
+    comparison shop and expect transparency.
+  trust_signals: >
+    Australian customer logos and case studies matter significantly. ISO
+    certifications. SOC 2 compliance. Local presence (even a small office)
+    adds credibility. References from other Australian companies are the
+    strongest trust signal.
+  plg_adoption: >
+    Moderate to high. Australian SMBs and startups adopt self-service SaaS
+    readily. Enterprise requires traditional sales but is open to product-led
+    motions if the product delivers clear value.
+
+pricing_norms:
+  preferred_model: "Per-seat and tiered pricing standard. Usage-based growing."
+  currency: "AUD (Australian Dollar)"
+  payment_methods: >
+    Credit cards dominant for SMB. Bank transfer and invoicing for enterprise.
+    PayPal common. BPAY for larger B2B transactions. No unusual payment
+    requirements compared to US/UK.
+  annual_vs_monthly: >
+    Both accepted. Annual contracts common for enterprise with 10-20% discount.
+    Monthly acceptable for SMB/startup. No strong cultural preference either way.
+  price_sensitivity: >
+    Moderate. Australian buyers expect fair pricing but are willing to pay for
+    quality. USD pricing is acceptable but AUD preferred. Exchange rate
+    fluctuation is a consideration -- local currency reduces friction.
+
+sales_process:
+  typical_cycle_length: "2-4 months enterprise, 2-6 weeks SMB"
+  stakeholders_involved: "3-5 at enterprise, 1-2 at SMB"
+  channel_preference: >
+    Direct sales works well in Australia. Channel partnerships less critical
+    than in Japan or Korea. Australian IT distributors (Dicker Data, Synnex)
+    relevant for larger-scale distribution.
+  first_contact_method: >
+    Email, LinkedIn, and events. Australian business culture is approachable.
+    Cold outreach works better than in most APAC markets. Conferences and
+    meetups in Sydney/Melbourne are effective lead generation channels.
+
+content_preferences:
+  preferred_formats:
+    - "Blog posts and how-to guides"
+    - "Case studies featuring Australian companies"
+    - "Webinars at AEST-friendly times"
+    - "Comparison pages and buyer guides"
+    - "Video demos and product walkthroughs"
+  language_requirements: >
+    English with Australian spelling conventions (optimise, colour, centre).
+    Not strictly enforced but improves local credibility. No translation
+    needed -- lowest localization barrier in APAC.
+  key_channels:
+    - "Google search (organic + paid)"
+    - "LinkedIn (strong B2B channel in Australia)"
+    - "Industry events (SaaStr APAC, local tech meetups)"
+    - "G2 and Capterra reviews"
+    - "Email marketing"
+  content_depth: >
+    Australian buyers appreciate practical, no-nonsense content. Similar depth
+    expectations to US/UK. Case studies and ROI-focused content perform well.
+
+regulatory:
+  data_protection: >
+    Privacy Act 1988 with Australian Privacy Principles (APPs). Amended by
+    the Privacy Legislation Amendment Act 2022 with stronger penalties. Fines
+    up to AUD 50 million or 30% of adjusted turnover for serious breaches.
+  data_residency: >
+    No strict data localization requirement. Cross-border data transfer
+    permitted with reasonable steps to protect data. Some government and
+    financial services clients require Australia-hosted data.
+  entity_requirements: >
+    Foreign companies can register as an Australian branch or establish a
+    proprietary limited company (Pty Ltd). ABN (Australian Business Number)
+    required for B2B transactions.
+  tax_considerations: >
+    GST at 10%. Mandatory for businesses with AUD 75,000+ turnover. Electronic
+    invoicing growing. Straightforward tax system compared to most markets.
+
+cultural:
+  business_etiquette: >
+    Informal and egalitarian. First-name basis is standard. Australians value
+    directness and authenticity. "Tall poppy syndrome" means avoid being
+    overly boastful -- let results speak.
+  communication_style: >
+    Direct, casual, and humor-friendly. Australian business culture is less
+    formal than UK or US corporate. Authenticity valued over polish.
+  key_norms: >
+    Work-life balance is culturally important. Respect for holidays and
+    personal time. Decisions are pragmatic and value-driven. Australians
+    are early adopters of technology but skeptical of hype.
+
+channel_strategy:
+  direct_vs_partner: >
+    Direct-first is viable. Channel partnerships less critical than in other
+    APAC markets. IT distributors (Dicker Data, Synnex Australia) useful for
+    scale but not required for initial entry.
+  key_channels:
+    - "Direct sales (email + LinkedIn + events)"
+    - "IT distributors (Dicker Data, Synnex)"
+    - "AWS/Azure/GCP Marketplace"
+    - "Local tech communities and meetups"
+  marketplace_presence: >
+    Cloud marketplaces (AWS, Azure) increasingly important for enterprise
+    procurement in Australia. Government contracts often prefer marketplace
+    purchasing for compliance simplicity.
+
+success_patterns:
+  - >
+    Canva's "Truly Local" strategy -- reworking campaigns to connect with each
+    market's cultural context, not just translating. Even for English-speaking
+    markets, cultural localization matters.
+  - >
+    Companies that establish a small local team (even 2-3 people) in Sydney
+    or Melbourne gain significant credibility and access to the local network.
+  - >
+    Using Australia as an APAC beachhead -- proving the model in an
+    English-speaking market before expanding to Japan, Korea, or Southeast Asia.
+
+failure_patterns:
+  - >
+    Treating Australia as "just like the US but smaller." Buying patterns,
+    competitive landscape, and customer expectations differ. Local case studies
+    and references are essential.
+  - >
+    Ignoring time zones. Australia is 14-18 hours ahead of US West Coast.
+    Sales and support must accommodate AEST business hours.
+  - >
+    Pricing only in USD without AUD option creates friction and signals lack
+    of commitment to the market.

@@ -1,0 +1,180 @@
+market: "Germany"
+
+overview: >
+  Germany is Europe's largest economy and the anchor of the DACH region
+  (Germany, Austria, Switzerland). It has a massive B2B market driven by
+  manufacturing (Mittelstand), automotive, and engineering sectors. German
+  buyers are methodical, data-driven, and value security and compliance above
+  all. GDPR compliance is non-negotiable and enforced aggressively. The market
+  rewards thorough documentation, transparent pricing, and long-term reliability
+  over flashy marketing.
+
+search_landscape:
+  primary_engine: "Google (google.de) -- 90%+ market share"
+  secondary_engines:
+    - "Bing -- small but relevant for enterprise users on Microsoft stack"
+  key_note: >
+    Google dominates but German-language content is essential. English content
+    ranks poorly for German queries. German keywords have different search
+    patterns -- compound words (Zusammensetzungen) create unique long-tail
+    opportunities. Example: "Projektmanagementsoftware" is one word in German.
+  seo_notes: >
+    .de domain strongly preferred. German-language content required for
+    organic visibility. DACH-targeted content can serve Germany, Austria,
+    and German-speaking Switzerland simultaneously.
+
+buyer_behavior:
+  decision_making: >
+    Thorough and methodical. German buyers conduct extensive due diligence
+    before purchasing decisions. Technical evaluation, security audit, and
+    compliance review are standard steps. Decisions involve multiple
+    stakeholders but follow structured evaluation criteria.
+  sales_cycle: >
+    3-9 months for enterprise, 1-3 months for SMB. German companies take
+    time but once committed, they are loyal long-term customers. Rushing
+    the process is counterproductive.
+  research_behavior: >
+    German buyers research independently and extensively before engaging
+    vendors. Detailed product documentation, technical specifications, and
+    comparison content are consumed before any sales conversation. They
+    arrive at meetings well-informed and expect vendors to match their depth.
+  trust_signals: >
+    ISO 27001 certification. GDPR compliance documentation. "Made in Germany"
+    or "Hosted in Germany/EU" signals. TUV certifications. German customer
+    references. Data processing agreements (Auftragsverarbeitungsvertrag/AVV)
+    readily available.
+  plg_adoption: >
+    Growing but still behind US levels. German SMBs increasingly adopt
+    self-service SaaS. Enterprise requires traditional sales with heavy
+    emphasis on security and compliance documentation.
+
+pricing_norms:
+  preferred_model: "Per-seat or per-user pricing standard. Transparent pricing preferred."
+  currency: "EUR (Euro)"
+  payment_methods: >
+    Bank transfer (Uberweisung) is standard for B2B. SEPA Direct Debit common.
+    Credit cards less used for B2B than in US/UK. Invoice-based payment
+    with 30-day terms is the norm for enterprise.
+  annual_vs_monthly: >
+    Annual contracts strongly preferred for enterprise. Monthly acceptable
+    for SMB. German companies value predictable costs.
+  price_sensitivity: >
+    German buyers are value-conscious, not price-sensitive. They will pay
+    premium for quality, security, and reliability. Transparent pricing
+    with no hidden fees is expected. "Contact us" pricing creates friction
+    with Mittelstand buyers.
+
+sales_process:
+  typical_cycle_length: "3-9 months enterprise, 1-3 months SMB"
+  stakeholders_involved: "4-7 at enterprise (including IT security, legal, procurement)"
+  channel_preference: >
+    Mix of direct and partner. Direct works for SMB/startup. Enterprise
+    often involves IT resellers and system integrators. German IT
+    distributors (ALSO, Ingram Micro DE) relevant for scale.
+  first_contact_method: >
+    Industry events (CeBIT successor events, DMEXCO), LinkedIn, and
+    targeted outreach. German business culture respects formal initial
+    contact. Personalized emails with relevant industry context outperform
+    generic templates.
+
+content_preferences:
+  preferred_formats:
+    - "Detailed whitepapers and technical documentation"
+    - "Case studies with German/DACH companies"
+    - "Product comparison guides (feature-by-feature)"
+    - "Webinars in German"
+    - "Security and compliance documentation"
+  language_requirements: >
+    German required for all customer-facing content. Professional, formal
+    German (Sie-Form, not Du-Form) for B2B marketing. Technical accuracy
+    is critical -- German engineers will spot errors. Some SaaS companies
+    successfully use Du-Form for startup-oriented products.
+  key_channels:
+    - "Google search (German-language SEO)"
+    - "LinkedIn (strong B2B channel in Germany)"
+    - "XING (German professional network, still relevant though declining)"
+    - "Industry events and trade shows"
+    - "IT publications (Computerwoche, Heise, t3n)"
+  content_depth: >
+    German buyers expect thorough, technical content. Superficial marketing
+    copy damages credibility. Whitepapers should include methodology,
+    technical architecture details, and security information.
+
+regulatory:
+  data_protection: >
+    GDPR (General Data Protection Regulation) -- among the strictest
+    enforcement in the EU. Fines up to 20 million EUR or 4% of worldwide
+    annual revenue, whichever is higher. German DPAs (Datenschutzbehorden)
+    are active enforcers. Cookie consent, privacy notices, and data processing
+    agreements must be legally compliant.
+  data_residency: >
+    Strong preference for EU-hosted data. Many German enterprises require
+    Germany or EU data hosting as a procurement condition. Schrems II ruling
+    impacts US data transfers -- Standard Contractual Clauses (SCCs) with
+    supplementary measures required. EU-US Data Privacy Framework provides
+    a legal basis but German DPAs remain cautious.
+  entity_requirements: >
+    GmbH (Gesellschaft mit beschrankter Haftung) is the standard entity
+    type. Minimum share capital of EUR 25,000. Can also start with UG
+    (Unternehmergesellschaft) at EUR 1. Registration takes 2-4 weeks.
+  tax_considerations: >
+    VAT (Umsatzsteuer) at 19%. Mandatory reverse-charge mechanism for B2B
+    cross-border EU services. German invoicing requirements are detailed --
+    must include specific elements (Pflichtangaben). Electronic invoicing
+    becoming mandatory.
+
+cultural:
+  business_etiquette: >
+    Formal and structured. Use titles (Herr/Frau, Dr., Prof.) until invited
+    to use first names. Punctuality is absolute -- being late is disrespectful.
+    Meetings follow agendas strictly. Decisions are data-driven.
+  communication_style: >
+    Direct and factual. Germans value clarity and precision over diplomacy.
+    Marketing fluff is counterproductive. State what your product does, show
+    the data, and let results speak. Avoid superlatives and hyperbole.
+  key_norms: >
+    Engineering culture. Technical depth respected. "Grundlichkeit"
+    (thoroughness) is a core value. German companies expect vendors to be
+    as thorough and reliable as they are. Quality over speed.
+
+channel_strategy:
+  direct_vs_partner: >
+    Hybrid. Direct sales effective for SMB/startup. Enterprise often goes
+    through IT consultants and system integrators. DACH-wide partners can
+    serve Germany, Austria, and Switzerland from one relationship.
+  key_channels:
+    - "Direct sales (LinkedIn + events + targeted email)"
+    - "IT distributors (ALSO, Ingram Micro, Bechtle)"
+    - "System integrators and IT consultancies"
+    - "AWS/Azure Marketplace (growing for enterprise procurement)"
+  marketplace_presence: >
+    Cloud marketplaces gaining traction in German enterprise procurement.
+    Listing on AWS and Azure Marketplace adds legitimacy and simplifies
+    procurement compliance.
+
+success_patterns:
+  - >
+    Companies that invest in German-language content, GDPR compliance
+    documentation, and EU-hosted infrastructure from day one gain trust
+    faster than those that treat localization as an afterthought.
+  - >
+    DACH bundling -- serving Germany, Austria, and German-speaking Switzerland
+    as one market from a single localization effort. Similar language and
+    business culture, different regulatory nuances.
+  - >
+    Targeting Mittelstand (mid-market manufacturing and engineering companies)
+    with vertical-specific messaging. This segment is underserved by US SaaS
+    and has strong willingness to pay.
+
+failure_patterns:
+  - >
+    Ignoring GDPR compliance. German DPAs enforce aggressively. A single
+    complaint can trigger an audit. Non-compliance is a deal-breaker.
+  - >
+    Using casual, US-style marketing language. German B2B buyers find it
+    unserious. Technical precision and factual claims outperform emotional
+    appeal.
+  - >
+    Hosting data in the US without adequate legal basis. Post-Schrems II,
+    many German enterprises will not consider US-hosted solutions without
+    EU alternative.

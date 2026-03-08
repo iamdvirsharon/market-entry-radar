@@ -1,0 +1,141 @@
+market: "UK"
+
+overview: >
+  The UK is Europe's largest SaaS market and the most natural expansion target
+  for US SaaS companies. English-speaking, culturally similar, and with a
+  mature tech ecosystem centered on London. Post-Brexit, the UK has its own
+  data protection framework (UK GDPR) distinct from EU GDPR. The market is
+  competitive -- most US SaaS companies expand to the UK first, so
+  differentiation matters more than in less-contested markets.
+
+search_landscape:
+  primary_engine: "Google (google.co.uk) -- dominant with 90%+ share"
+  secondary_engines:
+    - "Bing -- small but relevant for enterprise Microsoft environments"
+  key_note: >
+    Google dominates. UK English spelling (optimise, colour, favour) improves
+    local relevance. .co.uk domains rank well for UK queries. UK-specific
+    content and case studies important for local credibility.
+
+buyer_behavior:
+  decision_making: >
+    Committee-based, similar to US but slightly more formal. 3-6 stakeholders
+    typical in enterprise deals. Procurement departments more involved than
+    in US SMBs.
+  sales_cycle: "2-6 months enterprise, 2-8 weeks SMB"
+  research_behavior: >
+    Similar to US -- Google, G2, Capterra, LinkedIn, peer recommendations.
+    UK buyers are sophisticated and well-informed. They benchmark against
+    both US and European alternatives.
+  trust_signals: >
+    UK customer logos and case studies. ISO 27001. Cyber Essentials
+    certification (UK government-backed). UK GDPR compliance. Local UK
+    support availability. ICO registration.
+  plg_adoption: >
+    High, similar to US. UK startup ecosystem (especially London) is very
+    receptive to PLG motions. Enterprise still requires sales engagement.
+
+pricing_norms:
+  preferred_model: "Per-seat and tiered pricing. Similar to US conventions."
+  currency: "GBP (British Pound Sterling)"
+  payment_methods: >
+    Credit cards, bank transfer (BACS), Direct Debit for recurring B2B.
+    Invoice-based payment with 30-day terms standard for enterprise.
+  annual_vs_monthly: "Both accepted. Similar to US preferences."
+  price_sensitivity: >
+    UK buyers are cost-conscious. GBP pricing expected -- USD-only pricing
+    creates friction and feels uncommitted to the UK market.
+
+sales_process:
+  typical_cycle_length: "2-6 months enterprise, 2-8 weeks SMB"
+  stakeholders_involved: "3-6 at enterprise, 1-2 at SMB"
+  channel_preference: "Direct sales works well. Partner channel optional but useful for scale."
+  first_contact_method: >
+    LinkedIn, email, and events. London tech events (SaaStock, Web Summit
+    London) are strong lead sources. UK business culture is approachable
+    but professional.
+
+content_preferences:
+  preferred_formats:
+    - "Blog posts and thought leadership"
+    - "Case studies with UK companies"
+    - "Webinars at GMT/BST-friendly times"
+    - "Comparison and buyer guides"
+    - "Industry reports and benchmarks"
+  language_requirements: >
+    English with UK spelling conventions. Not strictly required but improves
+    credibility. UK-specific regulatory content (UK GDPR, ICO) essential.
+  key_channels:
+    - "Google search (UK-targeted SEO)"
+    - "LinkedIn (primary B2B channel)"
+    - "Industry events (SaaStock, London Tech Week)"
+    - "G2 and Capterra"
+    - "Email marketing"
+  content_depth: "Similar to US expectations. Practical, ROI-focused content performs well."
+
+regulatory:
+  data_protection: >
+    UK GDPR (retained EU law post-Brexit) + Data Protection Act 2018. ICO
+    (Information Commissioner's Office) is the enforcement body. Fines up to
+    GBP 17.5 million or 4% of worldwide turnover. Post-Brexit, UK has
+    independent data protection framework but substantively similar to EU GDPR.
+  data_residency: >
+    No strict UK data localization requirement. EU adequacy decision allows
+    EU-UK data flows. UK-US data bridge allows US transfers under certain
+    conditions. UK-hosted or EU-hosted data preferred by some enterprise buyers.
+  entity_requirements: >
+    Limited Company (Ltd) is standard. Easy to incorporate via Companies House
+    -- can be done online in 24 hours. Corporation tax at 25%.
+  tax_considerations: >
+    VAT at 20%. Digital services tax of 2% on revenues from UK users for
+    companies with global revenue over GBP 500M. Making Tax Digital initiative
+    requires digital record-keeping.
+
+cultural:
+  business_etiquette: >
+    Professional but less formal than Germany. First-name basis common after
+    initial meeting. Humor appreciated in business contexts. Understated
+    confidence valued over aggressive sales tactics.
+  communication_style: >
+    Polite and measured. British indirectness can be subtle -- "quite good"
+    may mean "adequate." Less confrontational than US direct style but more
+    direct than Japanese communication.
+  key_norms: >
+    Pragmatic and results-oriented. UK businesses value ROI clarity.
+    Anti-hype -- overpromising damages credibility. Tea is not just a
+    stereotype -- informal meetings over tea/coffee are relationship-building
+    opportunities.
+
+channel_strategy:
+  direct_vs_partner: "Direct-first is viable. Channel partnerships useful for scale but not required for entry."
+  key_channels:
+    - "Direct sales (LinkedIn + events + email)"
+    - "AWS/Azure Marketplace"
+    - "IT resellers (Softcat, CDW UK)"
+    - "G-Cloud framework for public sector"
+  marketplace_presence: >
+    G-Cloud (government procurement framework) opens public sector
+    opportunities. Listing on G-Cloud Digital Marketplace is valuable for
+    companies targeting UK government and NHS.
+
+success_patterns:
+  - >
+    US companies that localize pricing to GBP and provide UK customer case
+    studies outperform those using US-centric marketing.
+  - >
+    Establishing a small London office (even 2-3 people) provides local
+    credibility, timezone coverage, and access to the London tech network.
+  - >
+    Getting on G-Cloud framework early opens government procurement pipeline
+    that competitors without listing cannot access.
+
+failure_patterns:
+  - >
+    Assuming UK is identical to US market. Competitive landscape, buyer
+    expectations, and regulatory requirements differ meaningfully.
+  - >
+    Ignoring UK GDPR requirements. Post-Brexit UK GDPR is its own framework
+    and requires separate compliance consideration.
+  - >
+    Pricing only in USD. UK buyers interpret this as lack of commitment
+    to the market.

@@ -1,0 +1,171 @@
+market: "Brazil"
+
+overview: >
+  Brazil is Latin America's largest economy and the dominant SaaS market in
+  the region. The B2B SaaS market is growing rapidly, driven by digital
+  transformation and a large domestic market of 200+ million people.
+  Portuguese-language content is mandatory. The regulatory environment is
+  complex -- LGPD (data protection), NF-e (electronic invoicing), and a
+  notoriously complicated tax system create barriers that also serve as
+  moats for companies that navigate them successfully.
+
+search_landscape:
+  primary_engine: "Google (google.com.br) -- dominant with 95%+ share"
+  secondary_engines:
+    - "Bing -- minimal share"
+  key_note: >
+    Google dominates completely. Portuguese-language content is essential.
+    .com.br domain strongly preferred for local credibility. Brazilian
+    Portuguese (not European Portuguese) must be used -- they are
+    significantly different in vocabulary, grammar, and tone.
+
+buyer_behavior:
+  decision_making: >
+    Relationship-driven. Personal connections and trust are critical in
+    Brazilian B2B. Decisions often influenced by personal rapport with the
+    vendor as much as product features. Business relationships are built
+    through personal interaction.
+  sales_cycle: "2-6 months enterprise, 1-3 months SMB"
+  research_behavior: >
+    Brazilian buyers use Google, LinkedIn, and peer recommendations. Growing
+    use of review platforms. WhatsApp is the dominant business communication
+    channel -- more important than email for B2B in Brazil.
+  trust_signals: >
+    Brazilian customer logos and case studies. LGPD compliance. Local
+    Brazilian support (Portuguese-speaking, BRT timezone). References from
+    known Brazilian companies. CNPJ (Brazilian tax ID) for the entity.
+  plg_adoption: >
+    Growing strongly. Brazil's startup ecosystem (Sao Paulo, especially)
+    is vibrant and open to PLG. Enterprise still requires traditional
+    sales but with strong digital engagement.
+
+pricing_norms:
+  preferred_model: "Per-seat and tiered pricing. Freemium models popular."
+  currency: "BRL (Brazilian Real)"
+  payment_methods: >
+    PIX (instant payment system launched 2020, massive adoption -- used by
+    70%+ of adult population). Boleto bancario (bank slip) for B2B invoicing.
+    Credit cards. Bank transfer. PIX is transforming B2B payments due to
+    instant settlement and zero cost.
+  annual_vs_monthly: >
+    Monthly more common due to economic volatility and currency fluctuation.
+    Annual contracts accepted but often with BRL pricing to manage currency risk.
+  price_sensitivity: >
+    High. Brazilian buyers are cost-sensitive due to economic volatility and
+    BRL devaluation against USD. Local BRL pricing is critical. USD pricing
+    creates significant friction and exchange rate anxiety. Consider PPP-
+    adjusted pricing.
+
+sales_process:
+  typical_cycle_length: "2-6 months enterprise, 1-3 months SMB"
+  stakeholders_involved: "3-5 at enterprise, 1-2 at SMB"
+  channel_preference: >
+    Mix of direct and partner. WhatsApp is the primary communication channel
+    for both sales and support. Brazilian buyers expect WhatsApp availability
+    for business communication.
+  first_contact_method: >
+    WhatsApp, LinkedIn, and industry events. WhatsApp Business is essential --
+    Brazilian professionals expect to communicate with vendors via WhatsApp.
+    Email is secondary to WhatsApp in importance.
+
+content_preferences:
+  preferred_formats:
+    - "Blog posts in Brazilian Portuguese"
+    - "Video content (YouTube is huge in Brazil)"
+    - "WhatsApp-friendly short-form content"
+    - "Webinars in Portuguese"
+    - "Case studies with Brazilian companies"
+  language_requirements: >
+    Brazilian Portuguese mandatory. NOT European Portuguese -- vocabulary,
+    grammar, and tone differ significantly. "Voce" (informal you) is
+    acceptable in Brazilian business Portuguese for many contexts. The tone
+    is warmer and more personal than European Portuguese.
+  key_channels:
+    - "Google.com.br (Portuguese SEO)"
+    - "LinkedIn Brazil (strong B2B)"
+    - "YouTube Brazil (second largest YouTube market globally)"
+    - "WhatsApp Business"
+    - "Instagram (surprisingly relevant for B2B in Brazil)"
+  content_depth: >
+    Brazilian buyers appreciate practical, actionable content. Video content
+    performs exceptionally well. Content tone should be warm and personable --
+    matching Brazilian communication style.
+
+regulatory:
+  data_protection: >
+    LGPD (Lei Geral de Protecao de Dados) -- Brazil's data protection law,
+    modeled after GDPR. Enforced by ANPD (Autoridade Nacional de Protecao
+    de Dados). Fines up to 2% of revenue in Brazil, capped at BRL 50 million
+    per violation. Consent-based framework with legitimate interest provisions.
+  data_residency: >
+    No strict data localization requirement. Cross-border data transfer
+    permitted with adequate protection. Some Brazilian enterprises and
+    government agencies prefer Brazil-hosted data.
+  entity_requirements: >
+    LTDA (Limitada) or S.A. (Sociedade Anonima) for larger companies.
+    Brazilian incorporation is notoriously bureaucratic -- can take 2-6
+    months. CNPJ (national tax ID) required for all business operations.
+    Consider using an Employer of Record (EOR) for initial entry.
+  tax_considerations: >
+    One of the most complex tax systems globally. Multiple overlapping
+    taxes: ICMS (state), ISS (municipal), PIS/COFINS (federal), IRPJ
+    (corporate income). NF-e (Nota Fiscal Eletronica) electronic invoicing
+    is mandatory for all B2B transactions. Tax compliance is a significant
+    operational burden -- budget for local tax advisory.
+
+cultural:
+  business_etiquette: >
+    Warm and personal. Physical greetings (handshake, sometimes cheek kiss
+    in social-business contexts). Relationship-building is essential before
+    business discussions. Meetings often start with personal conversation.
+    Brazilians are comfortable with closer personal space.
+  communication_style: >
+    Warm, expressive, and relationship-oriented. Communication is less
+    formal than European or Japanese business culture. Personal rapport
+    matters significantly. Brazilian Portuguese allows for a warmer, more
+    engaging tone in marketing content.
+  key_norms: >
+    "Jeitinho brasileiro" (the Brazilian way) -- creative problem-solving
+    and flexibility. Relationships are the currency of business. Personal
+    connections often matter more than formal procurement processes.
+    Carnival period (February) has minimal business activity.
+
+channel_strategy:
+  direct_vs_partner: >
+    Hybrid. Direct works for Sao Paulo-based tech companies and startups.
+    Regional Brazil (outside Sao Paulo/Rio) often requires local partners
+    or resellers. WhatsApp-based sales support is expected.
+  key_channels:
+    - "Direct sales via WhatsApp and LinkedIn"
+    - "Local IT distributors and resellers"
+    - "Industry events (Web Summit Rio, Gramado Summit)"
+    - "Digital channels (Google Ads, LinkedIn Ads)"
+  marketplace_presence: >
+    AWS and Azure Marketplace present but less critical than in US/Europe.
+    Direct channel and partner relationships more important.
+
+success_patterns:
+  - >
+    Companies that establish WhatsApp Business presence and BRL pricing from
+    day one convert significantly better than those using email-only and
+    USD pricing.
+  - >
+    Using Sao Paulo as the Latin America hub, then expanding to Mexico,
+    Colombia, and Argentina with market-specific strategies.
+  - >
+    Investing in Brazilian Portuguese content creation (not translation)
+    and YouTube presence. Brazil is the second-largest YouTube market globally.
+
+failure_patterns:
+  - >
+    Using European Portuguese instead of Brazilian Portuguese. They are
+    different enough that Brazilian buyers notice immediately and it damages
+    credibility.
+  - >
+    Underestimating tax complexity. NF-e compliance and the multi-layered
+    tax system require local expertise. Companies that skip tax advisory
+    face compliance issues.
+  - >
+    Pricing only in USD. BRL volatility means Brazilian buyers face
+    unpredictable costs. Local currency pricing is expected and reduces
+    churn from exchange rate frustration.

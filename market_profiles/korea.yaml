@@ -1,0 +1,169 @@
+market: "Korea"
+
+overview: >
+  South Korea is one of the most digitally advanced markets in the world, with
+  near-universal internet penetration and mobile-first consumer behavior. The
+  B2B SaaS market is growing rapidly, driven by conglomerate digital
+  transformation initiatives. However, the market is dominated by local
+  platforms (Naver, Kakao) that control search, communication, and payments.
+  Success requires native integration with these platforms -- they are not
+  optional.
+
+search_landscape:
+  primary_engine: "Naver -- dominant Korean search engine, not Google"
+  secondary_engines:
+    - "Google Korea (google.co.kr) -- secondary, growing but still behind Naver"
+    - "Daum (now merged with Kakao) -- smaller search share but integrated into Kakao ecosystem"
+  key_note: >
+    Naver SEO is fundamentally different from Google SEO. Naver prioritizes
+    its own platforms (Naver Blog, Naver Cafe, Naver Knowledge iN) in search
+    results. To rank on Naver, you need content ON Naver's platforms, not just
+    on your own website. Google is gaining share but Naver remains primary for
+    B2B discovery.
+  seo_notes: >
+    Naver Blog posts rank higher than external websites for most queries.
+    Companies must maintain an active Naver Blog with keyword-optimized Korean
+    content. Naver Cafe (community forums) are important for social proof and
+    user-generated content.
+
+buyer_behavior:
+  decision_making: >
+    Hierarchical, especially within chaebol (large conglomerates like Samsung,
+    LG, SK, Hyundai). Decisions flow from the top. You must navigate to senior
+    leadership. Standard industry-based sales approaches don't work with
+    chaebol structures.
+  sales_cycle: >
+    3-9 months for enterprise, 1-3 months for SMB. Faster than Japan but
+    slower than the US. Chaebol procurement can take 6-12 months due to
+    internal approval hierarchies.
+  research_behavior: >
+    Korean buyers research extensively on Naver before engaging vendors. Naver
+    Blog posts, Naver Cafe discussions, and peer recommendations drive
+    shortlisting. Company reputation on Korean platforms matters more than
+    global brand recognition.
+  trust_signals: >
+    Korean enterprise logos and case studies in Korean. Government certifications
+    (ISMS-P for information security). Named Korean customer references.
+    Korean-language customer support availability.
+  plg_adoption: >
+    Higher than Japan but still lower than US. Korean SMBs and startups are
+    more open to self-service adoption. Enterprise still requires traditional
+    sales engagement.
+
+pricing_norms:
+  preferred_model: "Per-seat and per-usage models both work. Tiered pricing is standard."
+  currency: "KRW (Korean Won)"
+  payment_methods: >
+    KakaoPay and Naver Pay are dominant digital payment methods. Credit cards
+    widely used. Bank transfer (gyejwa ichae) for enterprise. Integration with
+    local payment systems is non-negotiable.
+  annual_vs_monthly: >
+    Annual contracts preferred for enterprise. Monthly acceptable for SMB
+    and startup segments. Korean companies often negotiate multi-year discounts.
+  price_sensitivity: >
+    Moderate. Korean buyers expect value-for-money but will pay premium for
+    proven quality with Korean references. Localized pricing in KRW is expected.
+
+sales_process:
+  typical_cycle_length: "3-9 months enterprise, 1-3 months SMB"
+  stakeholders_involved: "5-8 at chaebol, 2-4 at SMB/startup"
+  channel_preference: >
+    Mix of direct and partner. For chaebol accounts, partnerships with Korean
+    system integrators (Samsung SDS, LG CNS, SK C&C) are often required.
+    SMB can be reached through direct digital channels.
+  first_contact_method: >
+    KakaoTalk is the primary B2B communication platform -- more important than
+    email or LinkedIn for business communication in Korea. Initial outreach
+    often happens through chat platforms, not email.
+
+content_preferences:
+  preferred_formats:
+    - "Naver Blog posts (essential for Naver SEO)"
+    - "Case studies featuring Korean companies"
+    - "Webinars in Korean"
+    - "YouTube content (YouTube is major in Korea)"
+    - "KakaoTalk channel updates"
+  language_requirements: >
+    Korean-only for all customer-facing content. Korean formality levels
+    (jondaenmal/banmal) must be appropriate for business context -- use formal
+    polite speech (hapsyo-che) for B2B marketing materials.
+  key_channels:
+    - "Naver Blog and Naver Cafe"
+    - "KakaoTalk Business channels"
+    - "YouTube Korea"
+    - "LinkedIn (growing for B2B but still secondary)"
+    - "Industry conferences and tech events"
+  content_depth: >
+    Korean B2B buyers expect detailed product comparisons and technical
+    documentation in Korean. Video content performs well -- Korea has very
+    high video consumption rates.
+
+regulatory:
+  data_protection: >
+    Personal Information Protection Act (PIPA) -- one of the strictest in
+    Asia. Requires explicit consent for data collection. Heavy penalties
+    for non-compliance: fines up to 5% of related revenue.
+  data_residency: >
+    Cross-border data transfer requires informed consent or recognized
+    certification. Many Korean enterprises prefer Korea-hosted infrastructure.
+    Cloud Act concerns make some Korean enterprises wary of US-hosted data.
+  entity_requirements: >
+    Foreign companies can establish a branch office or a Korean subsidiary
+    (jusikhoesa). Subsidiary preferred for credibility and local hiring.
+  tax_considerations: >
+    VAT at 10%. Electronic tax invoicing (segyum gyesanso) is mandatory for B2B
+    transactions. Integration with Korean tax systems required.
+
+cultural:
+  business_etiquette: >
+    Hierarchical with strong respect for seniority. Age and title matter in
+    meetings. Business cards exchanged formally. After-work culture (hoesik)
+    is important for relationship building.
+  communication_style: >
+    More direct than Japan but still less confrontational than the US.
+    KakaoTalk is the default business communication channel. Quick responses
+    expected -- Koreans operate at high pace.
+  key_norms: >
+    Speed and efficiency valued. "Ppalli ppalli" (hurry hurry) culture means
+    Korean businesses expect fast turnaround. Slow response times damage
+    relationships more than in other markets.
+
+channel_strategy:
+  direct_vs_partner: >
+    Hybrid. Direct works for SMB/startup segment. Chaebol and large enterprise
+    require system integrator partnerships. Korean SIs (Samsung SDS, LG CNS,
+    SK C&C) are gatekeepers to major accounts.
+  key_channels:
+    - "System integrators (Samsung SDS, LG CNS, SK C&C)"
+    - "Korean IT distributors"
+    - "Direct digital (for SMB/startup)"
+    - "Naver Smart Store and marketplace presence"
+  marketplace_presence: >
+    Coupang dominates e-commerce but less relevant for B2B SaaS. Naver
+    Smart Store and Korean cloud marketplaces (NHN, Naver Cloud) matter more
+    for B2B software discovery.
+
+success_patterns:
+  - >
+    Successful SaaS entrants integrate with Naver, Kakao, and local payment
+    systems from day one. They treat these as table stakes, not nice-to-haves.
+  - >
+    Companies that hire Korean-speaking sales leadership with chaebol
+    relationships outperform those relying on English-speaking regional
+    managers based in Singapore.
+  - >
+    Korean localization goes beyond language -- it includes integrating with
+    KakaoTalk for customer support, Naver for content marketing, and local
+    payment methods for billing.
+
+failure_patterns:
+  - >
+    Companies that treat Korea as "like Japan but easier" fail. The platform
+    ecosystem (Naver/Kakao), communication norms (chat-first), and sales
+    culture (speed-oriented) are fundamentally different.
+  - >
+    Ignoring Naver and relying on Google-only SEO means missing the majority
+    of organic discovery traffic.
+  - >
+    Attempting direct enterprise sales without system integrator partnerships
+    blocks access to chaebol accounts.

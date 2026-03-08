@@ -1,0 +1,30 @@
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Generated data (re-created on each run)
+raw_data/*
+!raw_data/.gitkeep
+output/*
+!output/.gitkeep
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

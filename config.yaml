@@ -1,0 +1,50 @@
+# ============================================================
+# MARKET ENTRY RADAR -- Configuration
+# ============================================================
+# Fill in your details below. This is the only file you need to edit.
+
+# YOUR PRODUCT
+product:
+  # What your product does (one sentence)
+  description: "Project management SaaS for B2B teams"
+  # Your product category (used for search queries)
+  category: "project management software"
+  # Your homepage URL (scraped for positioning comparison)
+  homepage_url: "https://your-product.com"
+  # Your current pricing page URL (optional -- for pricing benchmark)
+  pricing_url: "https://your-product.com/pricing"
+
+# TARGET MARKET
+# Supported: japan, korea, australia, singapore, germany, uk, france, brazil
+target_market: "japan"
+
+# COMPETITORS (optional -- add known competitors to include in analysis)
+# Leave empty to rely on auto-discovery only
+known_competitors:
+  # - "https://competitor1.com"
+  # - "https://competitor2.com"
+
+# SEARCH QUERIES (optional -- add custom keywords to search)
+# The tool generates queries automatically from your category,
+# but you can add specific ones here
+custom_queries:
+  # - "best project management tool for enterprises"
+  # - "project management software comparison"
+
+# OUTPUT
+output:
+  # Where to save the final report
+  directory: "output"
+  # Report format: "markdown" or "html"
+  format: "markdown"
+
+# ADVANCED (usually no need to change)
+advanced:
+  # Max competitors to analyze (more = longer runtime + more API cost)
+  max_competitors: 15
+  # Max SERP queries per search engine (more = better discovery + more cost)
+  max_queries: 40
+  # Delay between API calls in seconds (be nice to the APIs)
+  request_delay: 1.0
+  # Claude model to use for analysis
+  claude_model: "claude-sonnet-4-20250514"
