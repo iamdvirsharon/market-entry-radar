@@ -164,6 +164,13 @@ def _sdk_search(env: dict, query: str, engine: str, gl: str, hl: str) -> dict:
                 language=language,
                 num_results=10,
             )
+        elif engine == "bing":
+            result = client.search.bing(
+                query=query,
+                location=location,
+                language=language,
+                num_results=10,
+            )
         elif engine == "naver":
             # Naver is not directly supported by SDK -- fall back to Google KR
             result = client.search.google(
@@ -280,6 +287,12 @@ def _gl_to_location(gl: str) -> str | None:
         "fr": "France",
         "br": "Brazil",
         "us": "United States",
+        "in": "India",
+        "ca": "Canada",
+        "nl": "Netherlands",
+        "il": "Israel",
+        "ae": "United Arab Emirates",
+        "mx": "Mexico",
     }
     return mapping.get(gl.lower())
 

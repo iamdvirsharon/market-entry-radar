@@ -1,0 +1,351 @@
+market: "China"
+
+overview: >
+  China represents the second-largest SaaS market globally, valued at approximately $15-18 billion
+  in 2025 and growing 15-20% annually. However, it is arguably the most complex market in the world
+  for foreign SaaS companies to enter. The Great Firewall blocks Google, Facebook, Twitter, YouTube,
+  WhatsApp, and many Western services -- meaning the entire digital playbook used in every other market
+  is irrelevant here. The regulatory environment has tightened dramatically since 2020 with the
+  implementation of PIPL (Personal Information Protection Law), DSL (Data Security Law), and
+  Cybersecurity Law, creating strict data localization requirements and government review processes
+  for cross-border data transfers.
+
+  The domestic SaaS ecosystem is massive and increasingly sophisticated. Alibaba Cloud (Aliyun),
+  Tencent Cloud, and Huawei Cloud dominate infrastructure. Enterprise SaaS leaders include DingTalk
+  (Alibaba's workplace platform, 600M+ users), WeCom/WeChat Work (Tencent, deeply integrated with
+  WeChat's 1.3 billion users), Feishu/Lark (ByteDance), Kingdee (ERP/finance), and Yonyou (enterprise
+  management). These platforms are not inferior alternatives -- they are deeply integrated with Chinese
+  business workflows, government systems, and payment infrastructure in ways that foreign tools
+  simply cannot replicate without massive localization investment.
+
+  For foreign SaaS companies, success in China almost always requires one of three approaches: (1)
+  a joint venture with a local partner who holds the ICP license and manages regulatory compliance,
+  (2) acquisition of or investment in a local company, or (3) serving only multinational corporations'
+  China operations through a "China edition" hosted on local cloud infrastructure. Pure cross-border
+  SaaS sales are increasingly difficult and legally risky. Companies like Salesforce (through Alibaba
+  partnership, later ended), LinkedIn (shut down in 2021), and Notion (blocked by Great Firewall)
+  illustrate the challenges. AWS and Azure operate in China through local partners (Sinnet and
+  21Vianet respectively), not directly -- this is the model foreign companies must emulate.
+
+search_landscape:
+  primary_engine: "Baidu -- approximately 56-60% market share for desktop, 85%+ for mobile search"
+  secondary_engines:
+    - "Sogou -- 14-18%, integrated with Tencent/WeChat ecosystem, strong for mobile"
+    - "Bing China -- 8-12%, the only major Western search engine accessible in China"
+    - "360 Search (Haosou) -- 5-8%, bundled with 360 Security browser"
+    - "Shenma (UC Browser) -- 5-7%, mobile-only, Alibaba-owned"
+    - "Douyin/TikTok search -- rapidly growing as Gen Z uses short-video platforms for product discovery"
+  key_note: >
+    Google is completely blocked in China. SEO strategy must be rebuilt from scratch for Baidu,
+    which has fundamentally different ranking algorithms, crawling behavior, and content preferences.
+    Baidu heavily favors content hosted on Chinese servers (ICP-licensed domains), Chinese-language
+    content, and pages that load quickly within China. Baidu also privileges its own ecosystem --
+    Baidu Baike (encyclopedia), Baidu Zhidao (Q&A), Baidu Tieba (forums) -- meaning content
+    marketing on Baidu's own platforms is essential. WeChat search (Sousou) is an increasingly
+    important discovery channel for B2B content, as professionals search within WeChat for articles,
+    mini-programs, and official accounts. Douyin (Chinese TikTok) is emerging as a B2B discovery
+    platform, particularly for SMB-facing SaaS.
+  seo_notes: >
+    Baidu SEO requires a .cn or .com.cn domain with a valid ICP (Internet Content Provider) license --
+    without this, your site will be severely deprioritized or not indexed at all. ICP licenses
+    require a Chinese business entity. Content must be in Simplified Chinese (zh-CN). Baidu's
+    algorithm favors fresh content, so regular publishing (2-3x per week minimum) is more important
+    than on Baidu than on Google. Meta descriptions and keywords tags still carry weight on Baidu
+    (unlike Google). Baidu penalizes JavaScript-heavy sites more aggressively -- server-side
+    rendering is critical. Paid search on Baidu (Baidu Tuiguang) is expensive and competitive
+    for SaaS keywords, with CPCs comparable to or higher than US Google Ads for competitive terms.
+    Zhihu (China's Quora equivalent) content ranks well on Baidu and is a strong B2B content channel.
+
+buyer_behavior:
+  decision_making: >
+    Chinese enterprise purchasing is hierarchical and consensus-driven, with decisions typically
+    requiring approval from multiple levels of management. Government and SOE (state-owned
+    enterprise) procurement follows formal bidding processes with strict documentation requirements.
+    Private enterprise decision-making varies by company size -- large private companies (like
+    those in Alibaba's or Tencent's ecosystem) have structured procurement, while SMBs often
+    have a single decision-maker (the boss/laoban). Guanxi (relationship networks) plays a
+    significant role -- vendors introduced through trusted connections receive preferential
+    treatment. Technical evaluation is thorough, and Chinese buyers often request on-premise
+    or private cloud deployment options even for SaaS products. Security reviews are increasingly
+    stringent due to regulatory pressure.
+  sales_cycle: "3-6 months for mid-market, 9-18 months for enterprise/SOE, 2-6 weeks for SMB"
+  research_behavior: >
+    Chinese B2B buyers research primarily through WeChat (official accounts, article shares in
+    group chats, mini-programs), Zhihu (in-depth Q&A and technical discussions), Baidu search,
+    and industry-specific vertical communities. Peer recommendations shared via WeChat groups
+    carry enormous weight. Analyst reports from local firms like iResearch, Analysys, and IDC
+    China are more influential than Gartner or Forrester. Live-streamed product demonstrations
+    on platforms like Douyin or Kuaishou are gaining traction for SMB-facing SaaS. Buyers
+    frequently request detailed technical documentation, security certifications (like DJCP/
+    Multi-Level Protection Scheme compliance), and reference calls with existing Chinese customers.
+    International customer references carry little weight -- local proof is essential.
+  trust_signals: >
+    Government certifications and approvals (DJCP/MLPS compliance, relevant industry licenses),
+    partnerships with Alibaba Cloud/Tencent Cloud/Huawei Cloud, Chinese customer logos (especially
+    well-known SOEs and major private companies like Huawei, Lenovo, Haier, Ping An), local data
+    center presence in China, local support team with Chinese-speaking engineers, membership in
+    Chinese industry associations, and positive coverage on Chinese tech media (36Kr, Huxiu,
+    PingWest). Having a physical office in Beijing, Shanghai, or Shenzhen signals commitment.
+    ISO 27001 and SOC 2 are baseline expectations, not differentiators.
+  plg_adoption: >
+    Product-led growth has significant traction in China's developer tools and design/productivity
+    segments. Figma had millions of Chinese users before access became complicated. Chinese PLG
+    success stories include Feishu (Lark), which grew rapidly through free team adoption before
+    monetizing. However, PLG faces structural challenges: the Great Firewall limits access to
+    foreign products, WeChat-based distribution is more effective than web-based virality, and
+    enterprise buyers in China expect high-touch sales engagement regardless of product complexity.
+    Freemium models work but must be distributed through Chinese channels (WeChat mini-programs,
+    Alibaba Cloud marketplace, DingTalk integration). The "land and expand" motion requires
+    Chinese social platforms, not email-based nurturing.
+
+pricing_norms:
+  preferred_model: "Annual subscription with RMB pricing, per-seat or tiered by company size"
+  currency: "RMB (CNY)"
+  payment_methods: >
+    Alipay (Zhifushan) and WeChat Pay (Weixin Zhifu) dominate digital payments and are expected
+    for SMB self-serve purchases. For enterprise contracts, bank wire transfers (through Chinese
+    banks like ICBC, CCB, Bank of China) with fapiao (official tax invoice) are standard.
+    Credit cards have low adoption for B2B compared to Western markets -- UnionPay is the
+    dominant card network but rarely used for SaaS subscriptions. For larger deals, letters of
+    credit or milestone-based payments may be requested. Cross-border payments in USD are
+    complex due to capital controls (SAFE regulations) -- having a local entity that can
+    receive RMB payments is a major advantage.
+  annual_vs_monthly: >
+    Annual contracts are strongly preferred in China, especially for enterprise. Chinese
+    procurement departments are accustomed to annual budgeting cycles and prefer to process
+    one payment and one fapiao per year. Monthly billing is acceptable for SMB and startup
+    segments but seen as non-standard for enterprise. Multi-year contracts (2-3 years) with
+    discounts are common and valued, as they demonstrate vendor commitment to the Chinese
+    market. Quarterly billing is unusual. Enterprise deals often include significant upfront
+    implementation fees in addition to annual subscriptions.
+  price_sensitivity: >
+    China is moderately price-sensitive for enterprise SaaS but highly price-sensitive for
+    SMB. Local competitors typically price 50-70% below equivalent foreign products -- DingTalk
+    and WeCom/Feishu offer extensive free tiers that undercut paid foreign alternatives. For
+    enterprise, Chinese buyers will pay premium prices for foreign technology that provides
+    genuine differentiation (especially in areas where local alternatives are weak, like
+    advanced analytics, specialized vertical SaaS, or security tools), but they expect
+    RMB-denominated pricing, not USD converted at current exchange rates. The willingness
+    to pay is highest in tier-1 cities (Beijing, Shanghai, Shenzhen, Guangzhou) and among
+    companies with international operations. Price negotiations are expected and can be
+    prolonged -- initial quotes should include room for 15-25% discounting.
+
+sales_process:
+  typical_cycle_length: "4-6 months mid-market, 12-18 months enterprise/SOE, 3-8 weeks SMB"
+  stakeholders_involved: "5-10+ for enterprise (IT, security, legal, procurement, business unit, management, sometimes government liaison)"
+  channel_preference: >
+    Channel partners and local resellers are essential for most foreign SaaS companies entering
+    China. Direct sales requires a local team with native Mandarin speakers and deep understanding
+    of Chinese business culture. The partner ecosystem includes major system integrators (Accenture
+    China, Deloitte China, local firms like Chinasoft International, Neusoft), cloud marketplace
+    partners (Alibaba Cloud, Tencent Cloud, Huawei Cloud partner programs), and industry-specific
+    VARs. For government and SOE sales, a local partner with existing relationships is nearly
+    mandatory -- cold outreach to government entities is ineffective. JV (joint venture) partners
+    who hold ICP licenses and manage compliance are the most common entry structure.
+  first_contact_method: >
+    WeChat is the primary business communication platform -- exchanging WeChat contacts (by
+    scanning QR codes) replaces exchanging business cards. Initial outreach through mutual
+    introductions on WeChat is far more effective than cold contact. LinkedIn (which was accessible
+    until its China closure in 2021) has been replaced by MaiMai (China's professional network)
+    for B2B prospecting, though its effectiveness is limited compared to WeChat introductions.
+    Industry conferences and trade shows (like the China International Import Expo, World AI
+    Conference, China SaaS Summit) are critical for enterprise pipeline generation. Baidu SEM
+    and WeChat advertising drive inbound for digital-first approaches.
+
+content_preferences:
+  preferred_formats:
+    - "WeChat Official Account articles (long-form, in-depth, shareable within WeChat ecosystem)"
+    - "Zhihu answers and columns (for thought leadership and technical credibility)"
+    - "Short video content on Douyin/Kuaishou (for brand awareness and SMB reach)"
+    - "Live-streamed product demonstrations and webinars (via Tencent Meeting, DingTalk, or Feishu)"
+    - "White papers and research reports co-branded with local analysts (iResearch, Analysys)"
+    - "Case studies featuring Chinese companies with RMB-denominated ROI metrics"
+    - "WeChat mini-programs for interactive demos and free tool experiences"
+  language_requirements: >
+    Simplified Chinese (zh-CN) is mandatory for all customer-facing content. English-only content
+    reaches effectively zero percent of the addressable market outside of multinational corporation
+    employees. Content must be written by native Mandarin speakers or professionally translated
+    and reviewed -- machine translation is immediately detectable and damages credibility. Technical
+    terminology should use established Chinese translations (not phonetic transliterations) where
+    they exist. Content style should be adapted to Chinese preferences: more data-heavy, more
+    authority-signaling, and more formally structured than typical Western SaaS content. Cultural
+    references, idioms, and examples must be locally relevant.
+  key_channels:
+    - "WeChat/WeCom -- dominant B2B communication and content distribution platform"
+    - "Zhihu -- thought leadership and technical credibility (China's Quora)"
+    - "Baidu -- primary search-driven discovery"
+    - "DingTalk -- enterprise platform with marketplace and content ecosystem"
+    - "Douyin (Chinese TikTok) -- growing for B2B brand awareness and SMB reach"
+    - "Bilibili -- developer community and technical education content"
+    - "36Kr, Huxiu, PingWest -- tech media for PR and thought leadership"
+    - "Industry conferences -- China SaaS Summit, World AI Conference, sector-specific events"
+  content_depth: >
+    Chinese B2B buyers expect extremely detailed technical content. Surface-level thought
+    leadership without substance is dismissed as "empty talk" (kong hua). White papers should
+    include extensive data, methodology explanations, and technical depth. Product documentation
+    should be comprehensive and available in Chinese. Case studies must include specific metrics,
+    implementation timelines, and named companies (with permission). Content that demonstrates
+    deep understanding of Chinese market challenges (regulatory compliance, local integrations,
+    Chinese business workflows) significantly outperforms generic global content localized to
+    Chinese. Avoid any content that could be perceived as politically sensitive.
+
+regulatory:
+  data_protection: >
+    PIPL (Personal Information Protection Law, effective November 2021) is China's comprehensive
+    data protection law, often compared to GDPR but with important differences. It applies to any
+    organization processing personal information of individuals in China, regardless of where the
+    organization is based. Key requirements include: explicit consent for data processing, data
+    minimization, purpose limitation, individual rights (access, correction, deletion), mandatory
+    Data Protection Impact Assessments for sensitive data processing, and data breach notification
+    within 72 hours. Cross-border data transfers require one of: security assessment by the
+    Cyberspace Administration of China (CAC), standard contractual clauses, or certification
+    by an accredited institution. Penalties include fines up to 50 million RMB or 5% of annual
+    revenue, and personal liability for responsible individuals including potential criminal
+    prosecution.
+  data_residency: >
+    Data localization is a hard requirement for most SaaS operations in China. The Cybersecurity
+    Law (2017), Data Security Law (2021), and PIPL (2021) collectively mandate that personal
+    information and "important data" collected in China be stored within mainland China. Critical
+    Information Infrastructure Operators (CIIOs) face the strictest requirements and must pass
+    a CAC security assessment before any cross-border data transfer. Even non-CIIOs processing
+    data of more than 1 million individuals must undergo CAC security assessment. In practice,
+    this means foreign SaaS companies must host their China operations on Alibaba Cloud, Tencent
+    Cloud, Huawei Cloud, or other licensed Chinese cloud providers -- AWS China (operated by
+    Sinnet/NWCD) and Azure China (operated by 21Vianet) are also options. Data stored on global
+    cloud infrastructure outside China is not compliant.
+  entity_requirements: >
+    Foreign companies cannot directly operate SaaS services in China without a local presence.
+    The most common structures are: (1) Wholly Foreign-Owned Enterprise (WFOE) -- full control
+    but limited to permitted industries and requires significant capital and time (6-12 months
+    to establish), (2) Joint Venture (JV) with a Chinese partner -- required for certain
+    restricted industries (including some technology categories) and provides local market access
+    and regulatory navigation, (3) Variable Interest Entity (VIE) -- a controversial structure
+    used by many tech companies (including Alibaba, Baidu, JD.com) to circumvent foreign
+    investment restrictions in restricted sectors, though its legal status remains ambiguous
+    and regulatory risk is high. An ICP (Internet Content Provider) license is required to host
+    any website or internet service in China and can only be obtained by a Chinese-registered
+    entity. ICP filing (bei'an) is the minimum requirement; ICP commercial license is needed
+    for paid services.
+  tax_considerations: >
+    VAT (Value-Added Tax/Zengzhi Shui) is 6% for modern services including SaaS (reduced from
+    previous rates under 2019 reforms). Fapiao (official VAT invoices) are mandatory for all
+    B2B transactions -- Chinese companies cannot deduct expenses or claim VAT credits without
+    a valid fapiao. The Golden Tax System (jin shui) is China's electronic invoice and tax
+    monitoring system, and all SaaS companies must integrate with it. Corporate income tax is
+    25% standard rate, with preferential rates (15%) available for High and New Technology
+    Enterprises (HNTE) -- a certification worth pursuing. Withholding tax of 10% applies to
+    royalties and service fees paid to foreign entities. Transfer pricing is actively scrutinized.
+    The "Two Exemptions, Three Halves" policy may benefit qualifying new foreign enterprises.
+
+cultural:
+  business_etiquette: >
+    Chinese business culture is formal, hierarchical, and relationship-centric. Business cards
+    (ming pian) should be presented and received with both hands, though WeChat QR code exchange
+    is increasingly replacing this. Seating arrangements at meetings and dinners follow strict
+    hierarchical protocols -- the most senior person sits facing the door. Business banquets
+    (yanhui) are important relationship-building events and may involve baijiu (strong liquor)
+    toasting -- declining politely is acceptable but participating builds rapport. Gift-giving
+    is common but must avoid cultural taboos (no clocks, no white wrapping, no sets of four).
+    "Face" (mianzi) is paramount -- never publicly embarrass or directly contradict a Chinese
+    business partner, especially in front of their subordinates.
+  communication_style: >
+    Communication is indirect and context-dependent (high-context culture). Silence does not
+    indicate disagreement -- it often means consideration or deference to hierarchy. "Yes" may
+    mean "I hear you" rather than "I agree." Disagreement is expressed through indirection --
+    "this might be difficult" often means "no." Decision-making may appear slow because consensus
+    must be built across multiple stakeholders behind the scenes. Written communication (especially
+    on WeChat) tends to be more direct than face-to-face. Mandarin language proficiency (or
+    having native speakers on the team) is essential -- conducting business through interpreters
+    is acceptable for initial meetings but limits relationship depth. Patience is critical --
+    pushing too aggressively for decisions damages relationships.
+  key_norms: >
+    Guanxi (relationship networks) is the foundational concept of Chinese business culture. Building
+    guanxi requires long-term investment in personal relationships, reciprocity, and trust. Business
+    decisions are heavily influenced by existing guanxi networks -- a warm introduction through a
+    mutual connection is worth more than any marketing campaign. Mianzi (face/reputation) must be
+    carefully maintained in all interactions. Hierarchy and seniority are deeply respected -- address
+    people by their title and surname (Wang Zong for CEO Wang). The concept of "996" (9am-9pm, 6
+    days a week) describes the work culture in many Chinese tech companies, though recent government
+    pushback has moderated this somewhat. Chinese holidays significantly impact business -- Chinese
+    New Year (Spring Festival) effectively shuts down business for 2-3 weeks, and Golden Week
+    (October 1-7) is another major pause.
+
+channel_strategy:
+  direct_vs_partner: >
+    For almost all foreign SaaS companies, a partner-led or JV model is necessary for China entry.
+    Direct sales requires a local entity, ICP license, local data hosting, Chinese payment
+    processing, and a Mandarin-speaking team -- a minimum investment of $500K-1M before acquiring
+    a single customer. Recommended approach: 80-90% partner/channel, 10-20% direct (for strategic
+    accounts). Partners provide regulatory navigation, local credibility, existing customer
+    relationships, and integration with Chinese business infrastructure. The exception is purely
+    serving multinational corporations' China offices, which can sometimes be done through global
+    account management without full local infrastructure.
+  key_channels:
+    - "Alibaba Cloud marketplace and partner program (largest cloud ecosystem in China)"
+    - "Tencent Cloud/WeChat ecosystem partners (for WeChat-integrated solutions)"
+    - "Huawei Cloud partner network (strong in government and telecom sectors)"
+    - "Major Chinese system integrators (Chinasoft International, Neusoft, Digital China)"
+    - "Big Four consulting firms' China practices (Deloitte, PwC, EY, KPMG China)"
+    - "Industry-specific channel partners and VARs"
+    - "Chinese VC-backed accelerators (for startup ecosystem access)"
+  marketplace_presence: >
+    Alibaba Cloud marketplace (Yunshi) is the most important SaaS marketplace in China, with
+    deep integration into Alibaba's enterprise ecosystem and procurement processes. Listing on
+    Alibaba Cloud marketplace provides credibility, discoverability, and simplified procurement
+    for Chinese enterprises. Tencent Cloud marketplace is the second major platform, particularly
+    relevant for products that integrate with WeChat/WeCom. Huawei Cloud marketplace is growing
+    and important for government and telecom sectors. DingTalk's app marketplace is relevant for
+    SMB-facing collaboration and productivity tools. These local marketplaces are far more
+    important than AWS or Azure marketplaces for reaching Chinese customers.
+
+success_patterns:
+  - >
+    Salesforce initially entered China in 2004 and struggled for years before partnering with
+    Alibaba Cloud in 2019 to offer Salesforce on local infrastructure. The partnership provided
+    data residency compliance, local payment processing, and integration with DingTalk. While the
+    partnership eventually ended in 2023, the model demonstrated that even the world's largest
+    SaaS company needed a local ecosystem partner to operate in China. Key lesson: no foreign
+    SaaS company is big enough to go it alone in China.
+  - >
+    AWS entered China by establishing a partnership with Beijing Sinnet Technology (now NWCD) to
+    operate "AWS China (Beijing)" and "AWS China (Ningxia)" regions. AWS does not directly
+    operate these regions -- Sinnet holds the ICP licenses and manages local regulatory compliance
+    while AWS provides the technology. This structure, replicated by Azure (through 21Vianet),
+    became the template for foreign cloud and SaaS companies operating in China. Key lesson:
+    the local partner model with separate Chinese operations is the proven entry structure.
+  - >
+    Zoom gained massive adoption in China during early 2020 before Chinese regulations tightened.
+    Rather than fight the regulatory environment, Zoom partnered with local providers and eventually
+    spun out its China operations. The initial viral growth demonstrated that Chinese users will
+    adopt foreign products when they provide genuine value, but sustained operations require full
+    regulatory compliance. Companies like Figma similarly saw organic Chinese adoption but face
+    ongoing challenges maintaining access through the Great Firewall. Key lesson: organic demand
+    exists but must be served through compliant local infrastructure.
+
+failure_patterns:
+  - >
+    LinkedIn launched in China in 2014, invested heavily in a localized product (InCareer),
+    and operated for seven years before shutting down its social features in China in October 2021,
+    citing a "significantly more challenging operating environment." Despite being one of the few
+    Western social platforms allowed to operate in China (through heavy censorship compliance),
+    LinkedIn could not compete with local professional network MaiMai and faced increasing
+    regulatory pressure to censor content. Key mistake: assuming that regulatory compliance
+    (censorship) would be a stable, manageable cost rather than an ever-escalating requirement.
+  - >
+    Multiple Western SaaS companies have entered China by simply hiring a small sales team in
+    Shanghai and pointing customers to their global cloud infrastructure, assuming that enterprise
+    customers would tolerate cross-border latency and data residency non-compliance. These companies
+    faced three simultaneous problems: the Great Firewall made their product unreliable (slow loads,
+    blocked features), enterprise security reviews flagged data residency violations, and local
+    competitors offered similar functionality at 50-70% lower prices with full local compliance.
+    Key mistake: treating "China entry" as a sales problem rather than an infrastructure and
+    regulatory problem.
+  - >
+    Several foreign SaaS companies burned through $2-5M attempting to build fully independent
+    China operations (WFOE, ICP license, local cloud hosting, local team) only to discover that
+    the total addressable market willing to pay foreign SaaS pricing was far smaller than projected.
+    Chinese enterprises that could afford premium pricing often preferred local alternatives that
+    integrated with WeChat, DingTalk, and government systems. Companies that could not differentiate
+    clearly from local alternatives (which had better Chinese integrations, local support, and lower
+    prices) failed to achieve payback on their China infrastructure investment. Key mistake:
+    overestimating the addressable market and underestimating local competition.

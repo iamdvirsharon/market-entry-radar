@@ -93,18 +93,27 @@ cp .env.example .env   # add your API keys
 python run.py           # edit config.yaml first
 ```
 
-## Supported Markets
+## Supported Markets (17)
 
 | Market | Search Engines | Profile |
 |---|---|---|
+| United States | Google, Bing | Full |
+| India | Google.co.in, Bing | Full |
+| Canada | Google.ca, Bing | Full |
 | Japan | Google.co.jp, Yahoo Japan | Full |
 | Korea | Naver, Google.co.kr | Full |
-| Australia | Google.com.au | Full |
-| Singapore | Google.com.sg | Full |
-| Germany | Google.de | Full |
-| UK | Google.co.uk | Full |
-| France | Google.fr | Full |
-| Brazil | Google.com.br | Full |
+| China | Baidu | Full |
+| Russia | Yandex, Google.ru | Full |
+| Australia | Google.com.au, Bing | Full |
+| Singapore | Google.com.sg, Bing | Full |
+| Germany | Google.de, Bing | Full |
+| UK | Google.co.uk, Bing | Full |
+| France | Google.fr, Bing | Full |
+| Brazil | Google.com.br, Bing | Full |
+| Netherlands | Google.nl, Bing | Full |
+| Israel | Google.co.il, Bing | Full |
+| UAE | Google.ae, Bing | Full |
+| Mexico | Google.com.mx, Bing | Full |
 
 Add your own by dropping a YAML file in `market_profiles/`.
 

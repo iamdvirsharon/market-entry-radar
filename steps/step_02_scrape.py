@@ -84,6 +84,13 @@ def _get_country_code(market: str) -> str:
         "uk": "gb",
         "france": "fr",
         "brazil": "br",
+        "united_states": "us",
+        "india": "in",
+        "canada": "ca",
+        "netherlands": "nl",
+        "israel": "il",
+        "uae": "ae",
+        "mexico": "mx",
     }.get(market, "us")
 
 

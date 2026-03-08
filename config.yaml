@@ -19,7 +19,9 @@ product:
   # pricing_url: "https://your-product.com/pricing"
 
 # TARGET MARKETS
-# Supported: japan, korea, australia, singapore, germany, uk, france, brazil
+# Supported: united_states, india, canada, japan, korea, china, russia,
+#   australia, singapore, germany, uk, france, brazil, netherlands, israel,
+#   uae, mexico
 # You can specify one or multiple markets. Multi-market runs produce
 # individual reports per market plus a cross-market comparison.
 target_markets:

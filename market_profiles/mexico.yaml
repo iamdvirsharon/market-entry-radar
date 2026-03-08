@@ -1,0 +1,296 @@
+market: "Mexico"
+
+overview: >
+  Mexico is the largest Spanish-speaking SaaS market in Latin America and the 15th-largest economy globally,
+  with a GDP exceeding $1.3 trillion. The country's tech sector has been supercharged by the nearshoring
+  trend, as US companies relocate manufacturing and operations closer to home -- creating a booming
+  US-Mexico tech corridor that runs from Austin/San Antonio through Monterrey and down to Mexico City.
+  SaaS spending in Mexico grew approximately 25-30% year-over-year from 2023 to 2025, driven by digital
+  transformation in mid-market enterprises, fintech regulation (Ley Fintech enacted 2018), and a young,
+  digitally native workforce.
+
+  The competitive landscape is a mix of US incumbents (HubSpot, Salesforce, Slack) that have established
+  Mexican operations, regional Latin American players (Treble, Truora, Kushki), and a growing cohort of
+  homegrown Mexican SaaS companies like Clip (payments), Kavak (automotive marketplace), Konfio (SMB
+  lending), and Bitso (crypto). The mid-market and SMB segments remain significantly underserved --
+  enterprise tools are often too expensive and too English-centric for companies with 50-500 employees.
+  Localization beyond translation (MXN pricing, CFDI invoicing integration, SAT compliance) is a hard
+  requirement, not a nice-to-have.
+
+  Three tech hubs dominate: Mexico City (largest startup ecosystem, 60%+ of VC funding), Monterrey
+  (industrial tech, manufacturing SaaS, strong US corporate ties), and Guadalajara (developer talent
+  pool, sometimes called "Mexico's Silicon Valley"). Emerging hubs include Queretaro and Merida.
+  Internet penetration is approximately 80%, with mobile-first usage dominant outside major metros.
+
+search_landscape:
+  primary_engine: "Google -- 96.2% market share across desktop and mobile"
+  secondary_engines:
+    - "Bing -- 2.8%, primarily through enterprise Windows deployments and Copilot adoption"
+    - "Yahoo -- 0.5%, negligible and declining"
+    - "DuckDuckGo -- 0.3%, small privacy-conscious tech segment"
+  key_note: >
+    Google is effectively the only search engine that matters in Mexico. Search behavior skews
+    heavily mobile (70%+ of queries), and voice search in Spanish is growing rapidly through
+    Google Assistant on Android devices. YouTube is the second-largest search engine by usage
+    and critical for SaaS discovery -- Mexican buyers frequently search for software tutorials
+    and comparisons on YouTube before visiting vendor sites. Google My Business listings matter
+    for local credibility even for SaaS companies.
+  seo_notes: >
+    Content must be in Latin American Spanish (es-MX), not Castilian Spanish (es-ES). Vocabulary
+    differences matter -- "computadora" not "ordenador," "celular" not "movil," "platicar" not
+    "charlar." Long-tail keywords in Spanish often have lower competition and higher conversion
+    than English equivalents. Structure content around questions ("como," "que es," "por que")
+    as Mexican searchers frequently use question-based queries. Google Ads CPCs in Mexico are
+    60-75% lower than US equivalents for B2B SaaS keywords, making paid search highly efficient.
+    Domain strategy: use .com.mx for local trust or /es-mx/ subdirectories on global domains.
+
+buyer_behavior:
+  decision_making: >
+    Decision-making in Mexican enterprises is hierarchical and relationship-driven. The "jefe"
+    (boss/director) typically has final approval even for mid-level software purchases. In
+    companies with 50-200 employees, the owner or CEO is often directly involved in SaaS
+    purchasing decisions above $500/month. Procurement cycles involve more stakeholders than
+    comparable US companies -- IT, finance, the direct user team, and often a legal review for
+    data handling. Personal referrals and recommendations from trusted peers carry more weight
+    than analyst reports or review sites. WhatsApp group chats among industry peers are a major
+    informal channel for software recommendations.
+  sales_cycle: "45-90 days for mid-market, 4-8 months for enterprise, 1-3 weeks for SMB self-serve"
+  research_behavior: >
+    Mexican B2B buyers conduct extensive peer research before engaging vendors. The typical
+    journey starts with a Google search in Spanish, moves to YouTube for demos and tutorials,
+    then to peer recommendations via WhatsApp or LinkedIn. G2 and Capterra have growing but
+    still limited traction -- local review culture is less established than in the US. Buyers
+    often request live demos early in the process and prefer video calls over async communication.
+    Free trials are expected, and buyers will test 2-3 competing products simultaneously. Case
+    studies featuring Mexican or Latin American companies are significantly more persuasive than
+    US-only references.
+  trust_signals: >
+    Mexican company logos and case studies (especially recognizable brands like FEMSA, Bimbo,
+    Cemex, Liverpool, Banorte), Spanish-language support availability, local phone number
+    (country code +52), MXN pricing displayed prominently, CFDI invoicing capability mentioned,
+    physical presence or local team members, compliance with LFPDPPP stated explicitly, and
+    testimonials from Mexican users. SAT (tax authority) compliance integration is a strong
+    trust signal for finance-adjacent tools.
+  plg_adoption: >
+    Product-led growth is gaining traction but remains behind US adoption rates. Freemium models
+    work well for developer tools and productivity software -- Notion, Slack, and Figma all grew
+    organically in Mexico through PLG. However, for B2B SaaS targeting non-technical buyers,
+    a hybrid PLG + sales-assist model performs best. Free trials with WhatsApp-based onboarding
+    support convert at 2-3x the rate of pure self-serve. SMBs (especially those under 20
+    employees) strongly prefer trying before buying and resist contracts longer than monthly.
+
+pricing_norms:
+  preferred_model: "Monthly subscription with MXN pricing, annual discounts offered but not assumed"
+  currency: "MXN"
+  payment_methods: >
+    Credit and debit cards are the primary payment method for SaaS subscriptions, with Visa and
+    Mastercard dominant. Bank transfers (SPEI -- Mexico's instant payment system) are preferred
+    for annual contracts and enterprise deals. CoDi (mobile payment system) is growing but not
+    yet standard for B2B. PayPal has moderate adoption. For enterprise, direct bank deposit
+    with a CFDI invoice is often required by procurement departments. Clip and Mercado Pago are
+    relevant for SMB-facing tools. Many mid-market companies still issue physical checks for
+    large annual payments -- be prepared to accommodate this.
+  annual_vs_monthly: >
+    Monthly billing is the default expectation, especially for SMB and mid-market. Annual
+    contracts are accepted for enterprise deals but typically require a 15-25% discount to
+    justify the commitment. Many Mexican companies operate on tighter cash flow cycles and
+    prefer monthly payments even when annual pricing is cheaper. Quarterly billing is an
+    underused middle ground that performs well with mid-market buyers who want to commit but
+    cannot lock in for 12 months. Prepaid annual plans with CFDI invoicing are preferred by
+    larger companies for tax deduction purposes.
+  price_sensitivity: >
+    Mexico is a price-sensitive market. SaaS pricing should typically be 40-60% of US list
+    prices to be competitive. A tool priced at $99/user/month in the US should target
+    $500-800 MXN/user/month (approximately $30-50 USD). The mid-market sweet spot is
+    $2,000-15,000 MXN/month ($120-900 USD) for team-level tools. SMBs rarely pay more than
+    $3,000 MXN/month. Price anchoring against local alternatives (which are often 70-80%
+    cheaper than US tools) is critical. ROI must be demonstrated in MXN terms with local
+    benchmarks. "US pricing with a Mexico discount" positioning feels patronizing -- build
+    a genuine MXN price structure.
+
+sales_process:
+  typical_cycle_length: "60-90 days mid-market, 6+ months enterprise, 1-4 weeks SMB"
+  stakeholders_involved: "3-5 for mid-market (IT lead, department head, finance, CEO/owner, sometimes legal)"
+  channel_preference: >
+    Direct sales dominates for enterprise and upper mid-market. For SMB, channel partners
+    and resellers are important -- accounting firms, IT consultancies, and business process
+    outsourcing companies serve as trusted advisors. Value-added resellers (VARs) who bundle
+    SaaS with implementation services are effective. The nearshoring corridor creates
+    opportunities for US-based partners to sell into their Mexican operations.
+  first_contact_method: >
+    WhatsApp is the dominant business communication channel -- even enterprise buyers expect
+    to communicate via WhatsApp during the sales process. LinkedIn InMail works for initial
+    outreach to director-level and above, but response rates are lower than in the US. Cold
+    email in Spanish with a clear value proposition targeting a specific pain point performs
+    adequately. In-person events and conferences (like INCmty in Monterrey, Talent Land in
+    Guadalajara) drive high-quality pipeline. Webinars in Spanish with practical, tactical
+    content generate strong lead flow.
+
+content_preferences:
+  preferred_formats:
+    - "Video tutorials and product demos on YouTube (Spanish-language, 5-15 minutes)"
+    - "WhatsApp-compatible content (short videos, infographics, PDF one-pagers)"
+    - "Webinars in Spanish with live Q&A and practical use cases"
+    - "Blog posts and how-to guides in Latin American Spanish"
+    - "Case studies featuring Mexican companies with specific ROI metrics in MXN"
+    - "LinkedIn posts and articles in Spanish"
+    - "Podcast appearances on Mexican business/tech podcasts"
+  language_requirements: >
+    Latin American Spanish (es-MX) is mandatory for all customer-facing content. English-only
+    content will reach at most 15-20% of the market (senior executives and developer community).
+    Translation from English is acceptable as a starting point but must be reviewed by a native
+    Mexican Spanish speaker -- Castilian Spanish or generic "international Spanish" feels foreign
+    and reduces trust. Use "ustedes" forms, not "vosotros." Technical documentation can remain in
+    English for developer-focused tools, but UI, marketing, and support must be in Spanish.
+    Bilingual content (Spanish primary, English secondary) works well for companies in the
+    nearshoring corridor.
+  key_channels:
+    - "WhatsApp Business -- primary communication and nurturing channel"
+    - "LinkedIn -- growing rapidly among Mexican professionals, strong for B2B"
+    - "YouTube -- critical for product discovery and education"
+    - "Facebook -- still relevant for SMB audiences and community building"
+    - "Twitter/X -- used by tech community but declining in business relevance"
+    - "Google Search -- primary discovery channel"
+    - "Industry events -- INCmty, Talent Land, SaaStock LatAm"
+  content_depth: >
+    Mexican B2B buyers prefer practical, actionable content over theoretical thought leadership.
+    "Show me how to do it" outperforms "here is why it matters." Step-by-step tutorials,
+    implementation guides, and ROI calculators in MXN resonate strongly. Content that
+    acknowledges Mexican market realities (CFDI requirements, SAT compliance, peso-denominated
+    ROI) significantly outperforms generic LatAm content. Avoid condescending "emerging market"
+    framing -- Mexican tech professionals are sophisticated and well-informed.
+
+regulatory:
+  data_protection: >
+    LFPDPPP (Ley Federal de Proteccion de Datos Personales en Posesion de los Particulares) --
+    enacted 2010, enforced by INAI (Instituto Nacional de Transparencia). Requires explicit
+    consent for data collection (aviso de privacidad), purpose limitation, and data subject
+    rights including access, rectification, cancellation, and opposition (ARCO rights). Fines
+    up to 320,000 days of minimum wage in Mexico City (approximately $25M MXN). Less stringent
+    than GDPR but actively enforced. Data breach notification is required. Cross-border data
+    transfers are permitted if the receiving country has adequate protection or with data
+    subject consent.
+  data_residency: >
+    No strict data localization requirement under LFPDPPP -- data can be stored outside Mexico
+    with appropriate safeguards and consent. However, government and financial sector contracts
+    increasingly require or prefer Mexican data residency. AWS has a local region in Queretaro
+    (launched 2025), and Azure and Google Cloud have points of presence. For regulated industries
+    (banking under CNBV supervision, healthcare), data residency in Mexico may be contractually
+    required. Many enterprise buyers prefer regional data storage (US or Mexico) over European
+    or Asian hosting.
+  entity_requirements: >
+    Foreign companies can sell SaaS into Mexico without a local entity through cross-border
+    digital services. However, having a Mexican subsidiary (S.A. de C.V. or S. de R.L. de C.V.)
+    is strongly recommended for enterprise sales, as it enables CFDI invoicing, local banking,
+    and MXN-denominated contracts. Setting up a Mexican entity takes 4-8 weeks and requires a
+    legal representative (apoderado legal) with Mexican residency. An RFC (Registro Federal de
+    Contribuyentes) tax ID is required for all business operations. Many companies start with
+    an Employer of Record (EOR) like Deel or Remote for initial hires before establishing
+    a full entity.
+  tax_considerations: >
+    IVA (Impuesto al Valor Agregado) is 16% and applies to all SaaS services sold in Mexico.
+    Foreign digital service providers must register with SAT (Servicio de Administracion
+    Tributaria) and collect/remit IVA on sales to Mexican customers -- this was mandated by
+    the 2020 digital services tax reform. CFDI (Comprobante Fiscal Digital por Internet)
+    electronic invoicing is mandatory for all B2B transactions -- Mexican companies cannot
+    deduct expenses without a valid CFDI. This is a hard requirement: if you cannot issue
+    CFDI invoices, enterprise and mid-market buyers literally cannot purchase your product
+    through normal procurement channels. ISR (income tax) withholding may apply to payments
+    to foreign service providers. Transfer pricing rules apply to intercompany transactions.
+
+cultural:
+  business_etiquette: >
+    Mexican business culture blends formal hierarchy with warm personal relationships. Use
+    "Licenciado/a," "Ingeniero/a," or "Arquitecto/a" as professional titles in initial
+    interactions -- these carry significant weight. First meetings are often relationship-building
+    sessions, not hard sells. Punctuality norms are more flexible than in the US -- meetings
+    may start 10-15 minutes late, but this does not indicate disrespect. Business meals
+    (especially lunch, "la comida") are important relationship-building moments and can run
+    2-3 hours. Gift-giving is appreciated but not expected. Dress code varies by city --
+    Mexico City is more formal, Guadalajara's tech scene is more casual.
+  communication_style: >
+    Communication tends to be warm, relationship-oriented, and somewhat indirect compared to
+    US norms. Mexicans often prefer to build personal rapport before discussing business details.
+    Direct confrontation or blunt criticism is avoided -- negative feedback is typically delivered
+    diplomatically or through implication. "Si" does not always mean firm agreement -- it may
+    indicate acknowledgment or politeness. WhatsApp voice messages are commonly used in business
+    communication. Humor and personal conversation (family, food, travel, futbol) are natural
+    parts of professional interactions and should not be rushed past.
+  key_norms: >
+    Family is central to Mexican culture and frequently referenced in business contexts. Personal
+    relationships (personalismo) often determine business partnerships as much as product quality.
+    Loyalty to existing vendors and relationships is strong -- displacing an incumbent requires
+    building genuine trust, not just demonstrating superiority. Regional pride matters: Monterrey
+    is industrial and direct (more "American" in business style), Mexico City is cosmopolitan
+    and politically aware, Guadalajara is creative and tech-forward. Holidays like Dia de Muertos,
+    Mexican Independence Day (September 16), and Semana Santa significantly impact business
+    schedules. Avoid scheduling important meetings during December (vacation season) or the
+    first two weeks of January.
+
+channel_strategy:
+  direct_vs_partner: >
+    For enterprise (500+ employees): 70% direct sales, 30% channel partners. Build a small
+    direct sales team in Mexico City targeting Monterrey and Guadalajara remotely. For mid-market
+    (50-500): 40% direct, 60% channel -- leverage IT consultancies, accounting firms (like
+    Baker Tilly Mexico, BDO Mexico), and technology distributors. For SMB (under 50): 20%
+    direct, 80% channel/self-serve/PLG -- partner with business service providers, coworking
+    networks (WeWork Mexico, IOS Offices), and local tech communities. The nearshoring corridor
+    creates a unique channel opportunity: US companies expanding to Mexico need software, and
+    their US-based vendors can facilitate expansion.
+  key_channels:
+    - "IT consultancies and system integrators (KIO Networks, Alestra, Telmex Soluciones)"
+    - "Accounting and business advisory firms (for finance/compliance SaaS)"
+    - "AWS/Azure/Google Cloud partner networks (for infrastructure-adjacent tools)"
+    - "Industry associations (AMITI, CANIETI for tech sector)"
+    - "Startup accelerators and VCs (ALLVP, DILA Capital, 500 Global Mexico)"
+    - "Nearshoring service providers (connecting US companies to Mexican operations)"
+  marketplace_presence: >
+    AWS Marketplace has growing relevance for enterprise deals, especially with companies already
+    on AWS Queretaro region. Azure Marketplace is important for organizations using Microsoft
+    365 (high penetration in Mexican enterprises). Google Cloud Marketplace is earlier stage but
+    growing. Mercado Libre's ecosystem is relevant for e-commerce adjacent tools but not for
+    general B2B SaaS. Local marketplaces are not significant for SaaS distribution. App stores
+    (iOS, Google Play) matter for mobile-first tools targeting SMBs.
+
+success_patterns:
+  - >
+    Clip, the Mexican payments company, succeeded by building specifically for Mexico's informal
+    and cash-heavy economy rather than copying US payment models. They offered MXN-first pricing,
+    integrated CFDI invoicing from day one, distributed through retail channels (OXXO convenience
+    stores), and provided WhatsApp-based customer support. Key lesson: build for Mexican market
+    realities rather than adapting a US product with Spanish translation.
+  - >
+    HubSpot grew its Mexican customer base to 5,000+ companies by investing in a dedicated
+    LatAm Spanish content team, creating the HubSpot Academy in Spanish, pricing aggressively
+    in MXN (with starter plans under $1,000 MXN/month), and building a strong partner ecosystem
+    with Mexican marketing agencies. They hired local sales teams in Mexico City and leveraged
+    community-driven growth through local marketing meetups and events.
+  - >
+    Kavak became Mexico's first unicorn by solving a uniquely Mexican problem (lack of trust in
+    used car transactions) with technology. They invested heavily in WhatsApp-based customer
+    journeys, offered financing in MXN through local banking partnerships, and built physical
+    hubs in major cities to complement their digital experience. Their success shows that hybrid
+    digital-physical models resonate strongly in Mexico where trust is built through tangible
+    presence.
+
+failure_patterns:
+  - >
+    Multiple US SaaS companies have failed in Mexico by offering USD-only pricing with no CFDI
+    invoicing capability. Mexican procurement departments literally cannot process purchases
+    without CFDI -- it is not a preference but a tax compliance requirement. Companies that
+    treated CFDI as a "Phase 2" feature lost 12-18 months of potential enterprise revenue and
+    were locked out of any company with a formal purchasing process.
+  - >
+    Several venture-backed LatAm SaaS companies failed by targeting Mexico from remote offices
+    in Bogota or Buenos Aires, assuming "Latin America is one market." They used Castilian or
+    generic Spanish, priced in USD, and had no local presence. Mexican buyers perceived them as
+    outsiders who did not understand the local market. The companies that succeeded were those
+    that hired local teams in Mexico City or Monterrey and treated Mexico as a distinct market
+    with its own dynamics.
+  - >
+    A US-based project management tool entered Mexico with a direct English-language sales team
+    selling at US price points, assuming that multinational corporations would serve as their
+    beachhead. They underestimated how much of the buying process happens in Spanish, even at
+    global companies with Mexican operations. Local managers conducted evaluations in Spanish,
+    shared WhatsApp messages about tools in Spanish, and chose competitors who provided Spanish
+    onboarding and support -- even when the US tool had superior features.

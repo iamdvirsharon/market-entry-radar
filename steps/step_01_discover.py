@@ -3,7 +3,8 @@ Step 1: DISCOVER -- Find the real local competitive set.
 
 Uses Bright Data SERP API to run geo-targeted searches across the RIGHT
 search engines for each market. Not just Google -- Yahoo Japan, Naver for
-Korea, Baidu for China, Yandex for Russia.
+Korea, Baidu for China, Yandex for Russia, and Bing as a secondary engine
+for broader coverage.
 
 Output: A deduplicated list of local competitors with URLs and frequency scores.
 """
@@ -25,6 +26,7 @@ console = Console()
 
 # Search engine routing per market
 MARKET_ENGINES = {
+    # --- Markets with local search engines ---
     "japan": [
         {"engine": "google", "domain": "google.co.jp", "gl": "jp", "hl": "ja"},
         {"engine": "yahoo_japan", "domain": "search.yahoo.co.jp", "gl": "jp", "hl": "ja"},
@@ -40,23 +42,58 @@ MARKET_ENGINES = {
         {"engine": "yandex", "domain": "yandex.com", "gl": "ru", "hl": "ru"},
         {"engine": "google", "domain": "google.ru", "gl": "ru", "hl": "ru"},
     ],
+    # --- Google + Bing markets ---
+    "united_states": [
+        {"engine": "google", "domain": "google.com", "gl": "us", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "us", "hl": "en"},
+    ],
+    "india": [
+        {"engine": "google", "domain": "google.co.in", "gl": "in", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "in", "hl": "en"},
+    ],
+    "canada": [
+        {"engine": "google", "domain": "google.ca", "gl": "ca", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "ca", "hl": "en"},
+    ],
+    "netherlands": [
+        {"engine": "google", "domain": "google.nl", "gl": "nl", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "nl", "hl": "en"},
+    ],
+    "israel": [
+        {"engine": "google", "domain": "google.co.il", "gl": "il", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "il", "hl": "en"},
+    ],
+    "uae": [
+        {"engine": "google", "domain": "google.ae", "gl": "ae", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "ae", "hl": "en"},
+    ],
+    "mexico": [
+        {"engine": "google", "domain": "google.com.mx", "gl": "mx", "hl": "es"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "mx", "hl": "es"},
+    ],
     "australia": [
         {"engine": "google", "domain": "google.com.au", "gl": "au", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "au", "hl": "en"},
     ],
     "singapore": [
         {"engine": "google", "domain": "google.com.sg", "gl": "sg", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "sg", "hl": "en"},
     ],
     "germany": [
         {"engine": "google", "domain": "google.de", "gl": "de", "hl": "de"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "de", "hl": "de"},
     ],
     "uk": [
         {"engine": "google", "domain": "google.co.uk", "gl": "gb", "hl": "en"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "gb", "hl": "en"},
     ],
     "france": [
         {"engine": "google", "domain": "google.fr", "gl": "fr", "hl": "fr"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "fr", "hl": "fr"},
     ],
     "brazil": [
         {"engine": "google", "domain": "google.com.br", "gl": "br", "hl": "pt"},
+        {"engine": "bing", "domain": "www.bing.com", "gl": "br", "hl": "pt"},
     ],
 }
 
@@ -110,6 +147,8 @@ def _build_search_url(engine_config: dict, query: str) -> str:
     if engine == "google":
         domain = engine_config["domain"]
         return f"https://www.{domain}/search?q={encoded_query}&gl={gl}&hl={hl}&brd_json=1"
+    elif engine == "bing":
+        return f"https://www.bing.com/search?q={encoded_query}&cc={gl}&setlang={hl}&brd_json=1"
     elif engine == "yahoo_japan":
         return f"https://search.yahoo.co.jp/search?p={encoded_query}&brd_json=1"
     elif engine == "naver":

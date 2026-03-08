@@ -1,0 +1,264 @@
+market: "United States"
+
+overview: >
+  The United States is the world's largest SaaS market at $141B+ in 2024,
+  projected to exceed $200B by 2027. It is the default proving ground for B2B
+  software -- if your product can win here, it can scale globally. The market is
+  hyper-competitive with over 30,000 SaaS companies operating domestically, but
+  it also has the deepest pool of early adopters and the fastest path to
+  meaningful ARR. Silicon Valley, New York, Austin, and Boston remain the primary
+  tech hubs, but distributed buying has accelerated post-COVID with enterprise
+  procurement teams operating from everywhere.
+
+  The US pioneered product-led growth (PLG) and buyers here expect to try before
+  they buy. Freemium models, self-serve onboarding, and transparent pricing are
+  table stakes for SMB and increasingly expected in mid-market. Enterprise sales
+  remain relationship-driven but are shifting toward hybrid motions where PLG
+  qualifies leads before sales engages. The competitive moat is built on speed --
+  faster time-to-value, faster sales cycles, faster iteration. Companies like
+  Slack, Notion, and Figma proved that product experience beats sales decks in
+  this market.
+
+  Venture capital density means new competitors launch weekly in every category.
+  Differentiation requires either a genuinely novel approach, a specific vertical
+  focus, or a pricing disruption. Category creation (Drift with "conversational
+  marketing," Gong with "revenue intelligence") has been the most reliable
+  playbook for breaking through noise.
+
+search_landscape:
+  primary_engine: "Google (google.com) -- 87% market share in the US"
+  secondary_engines:
+    - "Bing -- 8% market share, growing due to Microsoft Copilot integration and enterprise Microsoft 365 stack default"
+    - "AI search (ChatGPT, Perplexity, Google AI Overviews) -- emerging channel reshaping how buyers discover and evaluate SaaS tools"
+  key_note: >
+    Google remains dominant but the search landscape is fragmenting. Bing's share
+    has grown 2+ percentage points since 2023 driven by Copilot and Edge defaults
+    in enterprise Windows environments. For B2B SaaS targeting Microsoft-heavy
+    organizations (financial services, government, healthcare), Bing optimization
+    is no longer optional. AI-generated answers are compressing click-through
+    rates on informational queries -- product comparison and review content is
+    becoming more valuable than top-of-funnel educational content.
+  seo_notes: >
+    Competition for SaaS keywords is extreme. "CRM software" costs $40+ CPC on
+    Google Ads. Long-tail, problem-aware keywords outperform category keywords.
+    G2 and Capterra dominate branded search results -- maintaining strong profiles
+    on these platforms is effectively an SEO strategy. Programmatic SEO (auto-
+    generated comparison pages, integration pages, use-case pages) has been the
+    highest-ROI organic strategy for companies like Zapier, Airtable, and
+    HubSpot. Schema markup for software applications, FAQ sections, and product
+    reviews directly impact rich snippet visibility.
+
+buyer_behavior:
+  decision_making: >
+    SMB (under 200 employees): Individual or small team decisions. A single
+    champion can sign off. Speed matters -- if the buyer cannot get from first
+    touch to active use in under 2 weeks, they will move on. Mid-market (200-
+    2,000 employees): Committee of 3-5 stakeholders. IT/security review required.
+    Procurement involved but flexible. Enterprise (2,000+): 6-10 stakeholders
+    across business, IT, security, legal, and procurement. Formal RFP processes
+    common. Gartner/Forrester influence is significant at this level.
+  sales_cycle: "2-4 weeks SMB, 1-3 months mid-market, 3-9 months enterprise"
+  research_behavior: >
+    US buyers are the most self-educated in the world. 70%+ of the buying journey
+    happens before a sales conversation. G2, Capterra, and TrustRadius reviews
+    are the first stop for shortlisting. Peer recommendations via Slack
+    communities (Pavilion, RevOps Co-op, Peak Community) and LinkedIn carry
+    enormous weight. Buyers expect to see transparent pricing, a free trial or
+    freemium tier, and at least 3 relevant case studies before engaging sales.
+  trust_signals: >
+    SOC 2 Type II certification is the minimum bar for enterprise sales. G2
+    badges ("Leader," "High Performer") displayed prominently on the website.
+    Named customer logos -- the bigger the better. TrustRadius reviews for
+    enterprise credibility. Gartner Magic Quadrant or Forrester Wave inclusion
+    for large deals. Real-time status pages (StatusPage.io) signal operational
+    maturity. HIPAA compliance for healthcare, FedRAMP for government.
+  plg_adoption: >
+    The US is the global epicenter of product-led growth. Buyers expect free
+    trials (14-day minimum), freemium tiers, and self-serve onboarding. Companies
+    that gate their product behind "request a demo" lose a significant portion of
+    the SMB and mid-market pipeline. The expectation is: sign up, get value in
+    under 10 minutes, upgrade when ready. Slack, Notion, Figma, Loom, and
+    Calendly all proved this model at scale.
+
+pricing_norms:
+  preferred_model: "Per-seat tiered pricing dominant. Usage-based (Snowflake model) growing fast in infrastructure and data tools."
+  currency: "USD"
+  payment_methods: >
+    Credit card (Visa, Mastercard, Amex) for SMB -- expected as the default
+    payment method for self-serve. ACH bank transfer and wire for enterprise
+    contracts. Net 30 invoicing standard for enterprise. Stripe is the expected
+    payment infrastructure. AWS/Azure/GCP Marketplace billing increasingly used
+    for enterprise to consolidate cloud spend and simplify procurement.
+  annual_vs_monthly: >
+    Monthly billing expected for self-serve and SMB. Annual contracts with 15-20%
+    discount standard for mid-market and enterprise. Multi-year deals (2-3 years)
+    common for enterprise with deeper discounts (25-30%). Annual prepay is the
+    preferred model for companies optimizing for predictable revenue.
+  price_sensitivity: >
+    Low relative to other markets. US buyers focus on ROI and time-to-value over
+    absolute price. A $50/user/month tool that saves 5 hours/week is an easy
+    sell. However, the market is crowded -- buyers compare pricing across 3-5
+    alternatives. Transparent pricing pages are expected. "Contact us for
+    pricing" works only for enterprise. Price increases are tolerated if
+    communicated with clear value justification and 60+ days notice.
+
+sales_process:
+  typical_cycle_length: "2-4 weeks SMB, 1-3 months mid-market, 3-9 months enterprise"
+  stakeholders_involved: "1-2 SMB, 3-5 mid-market, 6-10 enterprise"
+  channel_preference: >
+    Direct sales dominant for mid-market and enterprise. Self-serve for SMB.
+    Channel partnerships through VARs and system integrators (Accenture,
+    Deloitte, Slalom) important for enterprise but not required for initial
+    traction. Technology partnerships (Salesforce AppExchange, HubSpot App
+    Marketplace, Slack App Directory) serve as both distribution and credibility
+    channels.
+  first_contact_method: >
+    Inbound-first culture. Content marketing, SEO, and product-led acquisition
+    drive the best pipeline. Outbound works but must be hyper-personalized --
+    generic cold emails get sub-1% response rates. LinkedIn (Sales Navigator) is
+    the primary outbound channel. SDR model (specialized outbound reps) standard
+    at companies with $5M+ ARR. Cold calling has low response rates but still
+    works in specific verticals (healthcare, manufacturing, construction).
+
+content_preferences:
+  preferred_formats:
+    - "Interactive product demos (Navattic, Reprise, Walnut)"
+    - "Case studies with specific metrics (X% improvement, $Y saved)"
+    - "Comparison pages (vs. Competitor A, vs. Competitor B)"
+    - "Short-form video (under 2 minutes -- Loom-style product walkthroughs)"
+    - "ROI calculators and assessment tools"
+    - "Webinars (demand gen) and podcasts (thought leadership)"
+  language_requirements: >
+    English only. American English spelling and conventions (optimize, color,
+    center). No localization required. However, inclusive language and
+    accessibility compliance (WCAG 2.1 AA minimum) increasingly expected and
+    sometimes required in enterprise procurement.
+  key_channels:
+    - "Google search (organic + paid -- still the #1 channel)"
+    - "LinkedIn (dominant B2B social channel, both organic and LinkedIn Ads)"
+    - "G2, Capterra, TrustRadius (review platforms -- essential for discovery)"
+    - "Industry events (SaaStr Annual, SaaStock, Dreamforce, Inbound)"
+    - "Slack and Discord communities (Pavilion, dbt Community, RevOps Co-op)"
+    - "YouTube (product demos, thought leadership, tutorials)"
+    - "Email (newsletters like TLDR, Morning Brew for awareness)"
+  content_depth: >
+    Varies by stage. Top-of-funnel content should be scannable and actionable --
+    listicles, frameworks, quick wins. Bottom-of-funnel content should be deep
+    and specific -- technical documentation, architecture guides, security
+    whitepapers. US buyers are impatient with fluff. Every piece of content
+    should answer "so what?" within the first 100 words.
+
+regulatory:
+  data_protection: >
+    No federal comprehensive data privacy law (as of 2025). CCPA/CPRA
+    (California Consumer Privacy Act/California Privacy Rights Act) is the de
+    facto national standard. 15+ states have enacted privacy laws (Virginia VCDPA,
+    Colorado CPA, Connecticut CTDPA, Texas TDPSA, Oregon OCPA, others). HIPAA
+    for healthcare data. FERPA for education data. Gramm-Leach-Bliley for
+    financial data. SOC 2 Type II is the universal baseline for SaaS security
+    posture. SOX compliance required for publicly traded companies and their
+    vendors handling financial data.
+  data_residency: >
+    No federal data localization requirement. US-hosted data is the default and
+    preferred by most US buyers. Government contracts (FedRAMP) require US-based
+    infrastructure. Some regulated industries (healthcare, finance) require data
+    to remain within the US. AWS GovCloud and Azure Government are the standard
+    infrastructure for government workloads.
+  entity_requirements: >
+    Delaware C-Corp is the standard structure for VC-backed SaaS companies.
+    Foreign companies can form a US subsidiary (typically Delaware C-Corp or LLC)
+    relatively easily through services like Stripe Atlas, Firstbase, or Clerky.
+    EIN (Employer Identification Number) required for business operations. State-
+    level business registration required in each state where you have nexus.
+  tax_considerations: >
+    No federal VAT/GST. Sales tax is state-level and varies by state. SaaS
+    taxability differs by state -- currently taxable in approximately 20 states.
+    Nexus rules (economic nexus since South Dakota v. Wayfair, 2018) mean that
+    selling above threshold in a state creates tax obligations. Tools like Avalara
+    and Anrok handle SaaS sales tax compliance. W-9 forms required for US vendor
+    onboarding. 1099 reporting for payments to contractors.
+
+cultural:
+  business_etiquette: >
+    Direct, informal, and results-oriented. First-name basis from the first
+    interaction. Business casual is standard. Time is the most valued currency --
+    meetings should start on time and end early. Follow-up within 24 hours is
+    expected. American business culture rewards confidence and bold claims, but
+    they must be backed by data.
+  communication_style: >
+    Very direct. Americans say what they mean and expect the same. "No" is
+    acceptable and preferred over vague deferrals. Email and Slack are the primary
+    business communication channels. Voicemail is dying -- text and async
+    communication preferred, especially among younger buyers. Presentations
+    should lead with the punchline, not build to it.
+  key_norms: >
+    Speed and efficiency are the dominant values. American buyers want to move
+    fast -- slow response times kill deals. "What is the ROI?" is the first
+    question. Transparency is expected (pricing, product roadmap, limitations).
+    Diversity and inclusion matter in procurement -- enterprise RFPs increasingly
+    include DEI questions. Sustainability and ESG are growing factors but not yet
+    deal-breakers for most B2B purchases.
+
+channel_strategy:
+  direct_vs_partner: >
+    Direct-first for most SaaS companies. Build a direct sales motion before
+    investing in channels. Channel partnerships become important at $20M+ ARR for
+    enterprise penetration. Technology partnerships (app marketplaces) are more
+    valuable than traditional VAR/reseller partnerships for most SaaS products.
+    Cloud marketplaces (AWS, Azure, GCP) are increasingly the preferred
+    procurement channel for enterprise buyers with committed cloud spend.
+  key_channels:
+    - "Direct sales (inbound-led + outbound SDR model)"
+    - "Cloud Marketplaces (AWS Marketplace, Azure Marketplace, GCP Marketplace)"
+    - "Technology partnerships (Salesforce AppExchange, HubSpot Marketplace, Shopify App Store)"
+    - "System integrators for enterprise (Accenture, Deloitte, Slalom, Cognizant)"
+    - "Industry-specific VARs for vertical SaaS"
+  marketplace_presence: >
+    Cloud marketplace is a must for enterprise SaaS. AWS Marketplace processes
+    $3B+ annually in third-party software. Enterprise buyers with AWS/Azure/GCP
+    committed spend (EDP/MACC) strongly prefer marketplace purchases because it
+    draws down their cloud commitment. Tackle, Invisible, and Clazar are the
+    leading platforms for managing multi-marketplace listings. Listing on G2 and
+    Capterra is equally critical -- these are the "app stores" for SaaS discovery.
+
+success_patterns:
+  - >
+    Slack's bottom-up adoption playbook -- free tier for small teams, viral
+    growth through shared channels, then enterprise sales engaged once 50+
+    seats were active in an organization. By the time procurement got involved,
+    the product was already entrenched. This PLG-to-enterprise motion has become
+    the template for US SaaS growth.
+  - >
+    HubSpot's content-led market entry -- created the "inbound marketing"
+    category through relentless content production (blog, academy, certifications,
+    free tools). Built an audience of millions before the product was mature
+    enough for enterprise. Content created the demand, then the product captured
+    it. Their free CRM tier drove adoption that converted to paid marketing and
+    sales hubs.
+  - >
+    Snowflake's consumption-based pricing disruption -- in a market dominated
+    by annual seat licenses, Snowflake's pay-for-what-you-use model removed
+    procurement friction and aligned cost with value. Combined with a usage-
+    based PLG motion and strategic marketplace presence on AWS/Azure, they grew
+    from $97M to $2.8B ARR in 4 years.
+
+failure_patterns:
+  - >
+    Hiding pricing behind "contact us" forms in a market that expects
+    transparency. US SMB and mid-market buyers will shortlist only products
+    with visible pricing. Multiple studies show that SaaS websites with pricing
+    pages convert 2-3x better than those without. Gating pricing signals either
+    "we are too expensive" or "we do not respect your time."
+  - >
+    Over-investing in outbound sales before establishing inbound and product-
+    led acquisition channels. US buyers are inundated with cold outreach --
+    the average decision-maker receives 120+ sales emails per week. Without
+    brand awareness, content presence, or a strong product experience driving
+    referrals, outbound alone burns cash with diminishing returns.
+  - >
+    Ignoring the review ecosystem. Companies that do not actively manage their
+    G2, Capterra, and TrustRadius profiles lose deals they never see. Buyers
+    filter by review score and recency. A product with fewer than 50 reviews or
+    an average below 4.0 stars is eliminated from shortlists before sales is
+    ever contacted. Incentivized review programs (following platform guidelines)
+    are a required go-to-market investment.
