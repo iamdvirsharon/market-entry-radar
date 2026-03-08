@@ -1,6 +1,8 @@
 # Market Entry Radar
 
-Paste your homepage URL, pick a country, get a Market Entry Brief. The tool scrapes your site, figures out what you sell, finds local competitors in that market, analyzes their positioning and pricing, and tells you what to do first. ~$10-15 per market in API costs.
+I kept doing the same thing every time we evaluated a new market at Bright Data -- manually searching local search engines, scraping competitor sites, comparing pricing page by page. So I automated it.
+
+You paste your homepage URL, pick a country. The tool does the rest: finds local competitors, reads their sites, and gives you a Market Entry Brief with what to do first. ~$10-15 per market in API costs.
 
 ## Run It
 
