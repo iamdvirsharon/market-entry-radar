@@ -40,13 +40,16 @@ What features are most commonly gated behind premium tiers:
 
 ### Pricing Strategy Recommendations
 
-Based on the competitive pricing landscape:
+Based on the competitive pricing landscape, provide SPECIFIC numbers, not vague positioning advice:
 
-1. **Recommended price positioning**: Where should the user price relative to local competitors? (premium, mid-market, value) and why.
-2. **Recommended pricing model**: Per-seat, per-usage, or hybrid? Based on what the market expects.
-3. **Free tier recommendation**: Should the user offer one? What should it include?
-4. **Annual discount recommendation**: What percentage based on local norms?
-5. **Key feature gates**: What should be gated vs. included in base tier?
+1. **Exact entry pricing**: State the specific price in local currency and USD. Not "price at mid-market" but "Price your Starter tier at [X local currency]/month ($Y USD/month), which positions you 15% below [Competitor Z]'s equivalent tier."
+2. **Tier structure to launch with**: Name each tier, what's included, and the price. Example: "Launch with 3 tiers: Free (up to 5 users, basic features), Pro at [price] (up to 50 users, add integrations + API), Enterprise at [price] (unlimited, add SSO + dedicated support)."
+3. **Pricing model**: Per-seat, per-usage, or hybrid, and why based on what local competitors do.
+4. **Free tier recommendation**: Yes/No. If yes, what to include and what to gate. If no, what trial to offer instead.
+5. **Annual discount**: Exact percentage based on local norms. "Offer 20% annual discount (displayed as default), matching [Competitor X] and [Competitor Y]."
+6. **Feature gates**: Which specific features to lock behind higher tiers, based on what competitors gate. "Gate SSO at Pro tier (like [Competitor X] does), gate API access at Enterprise (standard in this market)."
+7. **Launch pricing tactic**: Should you undercut, match, or premium-price? "Undercut [Competitor X] by 20% for the first year to win initial accounts, then normalize to market rate."
+8. **Payment methods**: What payment methods to support based on market norms. "Support [local payment method] from Day 1, [X]% of B2B purchases in this market use it."
 
 ## Rules
 

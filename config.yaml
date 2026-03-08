@@ -14,9 +14,14 @@ product:
   # Your current pricing page URL (optional -- for pricing benchmark)
   pricing_url: "https://your-product.com/pricing"
 
-# TARGET MARKET
+# TARGET MARKETS
 # Supported: japan, korea, australia, singapore, germany, uk, france, brazil
-target_market: "japan"
+# You can specify one or multiple markets. Multi-market runs produce
+# individual reports per market plus a cross-market comparison.
+target_markets:
+  - japan
+  # - korea
+  # - australia
 
 # COMPETITORS (optional -- add known competitors to include in analysis)
 # Leave empty to rely on auto-discovery only

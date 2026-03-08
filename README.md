@@ -4,9 +4,11 @@ I've run GTM research for market entries across APAC and EMEA at Bright Data. Ev
 
 So I built a pipeline that does it in one run.
 
-You give it your product category and a target market. It runs geo-targeted SERP queries on the right search engines (not just Google, Yahoo Japan for Japan, Naver for Korea, Baidu for China), scrapes every competitor it finds, runs three analysis passes through Claude, layers in market-specific intelligence, and spits out a structured Market Entry Brief.
+You give it your product category and one or more target markets. It runs geo-targeted SERP queries on the right search engines (not just Google, Yahoo Japan for Japan, Naver for Korea, Baidu for China), scrapes every competitor it finds, runs three analysis passes through Claude, layers in market-specific intelligence, and spits out a structured Market Entry Brief with specific next actions.
 
-Is it as good as hiring McKinsey? No. Does it get you 80% of the way there for $10-15 in API costs? Yeah, it does.
+Pick multiple markets and it runs each one, then generates a cross-market comparison that ranks them and tells you where to enter first.
+
+Is it as good as hiring McKinsey? No. Does it get you 80% of the way there for $10-15 per market in API costs? Yeah, it does.
 
 ## How It Works
 
@@ -20,7 +22,7 @@ Five steps, fully automated:
 
 4. **ENRICH** - This is the part that normally costs $50K+ in consulting fees. Pre-built market profiles with real data: buyer behavior patterns, typical sales cycles, regulatory requirements, cultural considerations, channel strategies. I built these from actual market entry projects, not generic advice.
 
-5. **DELIVER** - Synthesizes everything into one Market Entry Brief with an executive summary, competitive landscape, pricing recommendations, content opportunities, localization warnings, and a 90-day phased entry plan.
+5. **DELIVER** - Synthesizes everything into one Market Entry Brief with an executive summary, competitive landscape, pricing recommendations, content opportunities, localization warnings, a 90-day phased entry plan, launch readiness checklist, and a "do this week" action list. If you ran multiple markets, it also generates a cross-market comparison.
 
 ## Supported Markets
 
@@ -59,7 +61,7 @@ pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-The web UI has dropdowns for market selection, form fields for your product info, and a spot to paste your API keys. No config files to edit.
+The web UI lets you pick one or more markets, enter your product info, and paste your API keys. No config files to edit. Select multiple markets and you get individual reports plus a cross-market comparison.
 
 **Prefer the CLI?**
 ```bash
@@ -73,11 +75,15 @@ python run.py
 The pipeline generates a Markdown report with these sections:
 
 - **Executive Summary** - Go/no-go signal. Is this market worth entering and why.
-- **Competitive Landscape** - Positioning matrix, competitor map with SERP frequency data
-- **Pricing Benchmark** - Comparison table with local currency and USD, tier structures, feature gates
-- **Content & SEO Gaps** - Ranked content opportunities with difficulty scores
+- **Competitive Landscape** - Positioning matrix, competitor map with SERP frequency data, recommended positioning angle with specific value prop language
+- **Pricing Benchmark** - Comparison table with local currency and USD, specific entry price recommendation, tier structure, payment methods
+- **Content & SEO Gaps** - Ranked content opportunities with difficulty scores, 90-day content calendar with specific titles and keywords
 - **Market Intelligence** - Buyer behavior, channel strategy, localization warnings, regulatory flags
-- **Entry Sequence** - 90-day phased plan (Foundation, Launch, Optimize)
+- **Entry Sequence** - 90-day phased plan with named partners, certifications, and hire recommendations
+- **Launch Readiness Checklist** - Binary checklist of what must be done before entering the market
+- **This Week Actions** - Top 5 tactical things to do this week, not strategy, execution
+
+If you run multiple markets, you also get a **Cross-Market Comparison** that ranks markets by attractiveness and recommends entry sequence.
 
 Reports save to `output/` with timestamps.
 

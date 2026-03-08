@@ -7,11 +7,11 @@ research package in under 2 hours. Powered by Bright Data + Claude.
 
 Usage:
     1. Copy .env.example to .env and add your API keys
-    2. Edit config.yaml with your product details and target market
+    2. Edit config.yaml with your product details and target market(s)
     3. Run: python run.py
 
 For the web UI (no CLI needed):
-    streamlit run app.py
+    python -m streamlit run app.py
 
 Steps:
     1. DISCOVER -- Geo-targeted SERP queries across the RIGHT search engines
@@ -20,7 +20,7 @@ Steps:
     4. ENRICH   -- Layer market-specific intelligence (buyer behavior, regulations, culture)
     5. DELIVER  -- Generate a complete Market Entry Brief
 
-Author: Dvir Sharon (https://linkedin.com/in/dvir-sharon)
+Author: Dvir Sharon (https://www.linkedin.com/in/dvirsharon/)
 Powered by: Bright Data (https://brightdata.com) + Anthropic Claude
 """
 
@@ -33,7 +33,11 @@ import yaml
 from dotenv import load_dotenv
 from rich.console import Console
 
-from pipeline import run_pipeline, display_config_panel, display_completion_panel
+from pipeline import (
+    run_multi_market_pipeline,
+    display_config_panel,
+    display_multi_completion_panel,
+)
 
 console = Console()
 
@@ -55,7 +59,7 @@ Powered by Bright Data + Claude[/dim]
 
 
 def load_config() -> dict:
-    """Load and validate config.yaml."""
+    """Load and validate config.yaml. Handles both old and new format."""
     config_path = PROJECT_ROOT / "config.yaml"
     if not config_path.exists():
         console.print("[red]Error: config.yaml not found. Copy config.yaml.example and edit it.[/red]")
@@ -64,12 +68,19 @@ def load_config() -> dict:
     with open(config_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
+    # Handle backward compatibility: target_market (string) -> target_markets (list)
+    if "target_markets" not in config and "target_market" in config:
+        config["target_markets"] = [config["target_market"]]
+    elif "target_markets" in config and "target_market" not in config:
+        # Set target_market to first market for any code that still reads it
+        config["target_market"] = config["target_markets"][0]
+
     # Validate required fields
     required = [
         ("product.description", config.get("product", {}).get("description")),
         ("product.category", config.get("product", {}).get("category")),
         ("product.homepage_url", config.get("product", {}).get("homepage_url")),
-        ("target_market", config.get("target_market")),
+        ("target_markets", config.get("target_markets")),
     ]
 
     missing = [name for name, val in required if not val]
@@ -119,13 +130,13 @@ def main():
 
     start_time = time.time()
 
-    results = run_pipeline(config, env)
+    results = run_multi_market_pipeline(config, env)
 
     elapsed = time.time() - start_time
     minutes = int(elapsed // 60)
     seconds = int(elapsed % 60)
 
-    display_completion_panel(config, results)
+    display_multi_completion_panel(config, results)
     console.print(f"\n  [dim]Runtime: {minutes}m {seconds}s[/dim]\n")
 
 

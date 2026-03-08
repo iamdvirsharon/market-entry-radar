@@ -61,6 +61,27 @@ Based on what ranks in this market, recommend:
 - Which formats to avoid (if they don't rank well in this market)
 - Any market-specific format preferences (e.g., Japanese buyers prefer detailed guides, Brazilian market favors video)
 
+### 90-Day Content Calendar
+
+A month-by-month plan of exactly what content to publish. Every item should be specific enough that a content writer could start working on it today.
+
+**Month 1: Quick Wins (Low effort, fast results)**
+For each piece (3-5 items):
+- Title: [exact title, keyword-optimized for local language]
+- Format: [blog post / comparison / landing page / etc.]
+- Target keyword: [specific keyword or keyword cluster]
+- Why now: [reference to gap data above]
+- Estimated effort: [hours/days]
+
+**Month 2: Authority Builders (Medium effort, compounding results)**
+For each piece (3-5 items):
+- Title, format, target keyword, why now, estimated effort (same structure)
+
+**Month 3: Differentiation Content (High effort, competitive moat)**
+For each piece (2-3 items):
+- Title, format, target keyword, why now, estimated effort (same structure)
+- These should be original research, interactive tools, or comprehensive guides that competitors can't easily replicate
+
 ## Rules
 
 - Use "--" instead of em dashes. Never use the em dash character.

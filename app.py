@@ -2,7 +2,7 @@
 Market Entry Radar -- Streamlit Web UI
 
 A non-developer-friendly web interface for the Market Entry Radar pipeline.
-Run with: streamlit run app.py
+Run with: python -m streamlit run app.py
 """
 
 import sys
@@ -15,7 +15,7 @@ PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from steps.step_01_discover import MARKET_ENGINES
-from pipeline import run_pipeline
+from pipeline import run_multi_market_pipeline
 
 # Page config
 st.set_page_config(
@@ -111,7 +111,7 @@ with st.sidebar:
 
 st.title("Market Entry Radar")
 st.markdown("**Regional GTM Intelligence Pipeline** -- Powered by Bright Data + Claude")
-st.markdown("Pick your target market. Drop in your product category. Get a complete Market Entry Brief.")
+st.markdown("Pick your target market(s). Drop in your product category. Get a complete Market Entry Brief.")
 
 st.divider()
 
@@ -142,30 +142,38 @@ with col2:
         help="Your pricing page for benchmark comparison",
     )
 
-# Market selection
-st.subheader("Target Market")
+# Market selection -- multiselect
+st.subheader("Target Market(s)")
 
+market_display_to_key = {m["display"]: m["key"] for m in AVAILABLE_MARKETS}
+market_key_to_info = {m["key"]: m for m in AVAILABLE_MARKETS}
 market_options = [m["display"] for m in AVAILABLE_MARKETS]
-market_keys = [m["key"] for m in AVAILABLE_MARKETS]
 
-selected_idx = st.selectbox(
-    "Choose your target market",
-    range(len(market_options)),
-    format_func=lambda i: market_options[i],
-    help="Markets with 'full profile' include buyer behavior, regulations, cultural norms, and channel strategy data",
+selected_displays = st.multiselect(
+    "Choose one or more target markets",
+    options=market_options,
+    default=[],
+    help="Select multiple markets for individual reports + a cross-market comparison. Markets with 'full profile' include buyer behavior, regulations, cultural norms, and channel strategy data.",
 )
 
-selected_market = AVAILABLE_MARKETS[selected_idx]
+selected_market_keys = [market_display_to_key[d] for d in selected_displays]
 
-# Show market details
-market_info_col1, market_info_col2 = st.columns(2)
-with market_info_col1:
-    st.markdown(f"**Search engines:** {', '.join(selected_market['engines'])}")
-with market_info_col2:
-    if selected_market["has_profile"]:
-        st.markdown("**Intelligence profile:** Full (buyer behavior, regulations, cultural norms)")
+# Show details for selected markets
+if selected_market_keys:
+    if len(selected_market_keys) == 1:
+        m = market_key_to_info[selected_market_keys[0]]
+        mc1, mc2 = st.columns(2)
+        with mc1:
+            st.markdown(f"**Search engines:** {', '.join(m['engines'])}")
+        with mc2:
+            profile_label = "Full (buyer behavior, regulations, cultural norms)" if m["has_profile"] else "SERP discovery only (no enrichment data)"
+            st.markdown(f"**Intelligence profile:** {profile_label}")
     else:
-        st.markdown("**Intelligence profile:** SERP discovery only (no enrichment data)")
+        st.markdown(f"**{len(selected_market_keys)} markets selected** -- individual reports per market + cross-market comparison")
+        for key in selected_market_keys:
+            m = market_key_to_info[key]
+            profile_icon = "✅" if m["has_profile"] else "⚠️"
+            st.markdown(f"- {m['label']}: {', '.join(m['engines'])} {profile_icon}")
 
 # Optional inputs
 with st.expander("Known Competitors & Custom Queries (optional)"):
@@ -199,18 +207,28 @@ with st.expander("Advanced Settings"):
 st.divider()
 
 # ---------------------------------------------------------------
+# Cost Estimate
+# ---------------------------------------------------------------
+
+if selected_market_keys:
+    n_markets = len(selected_market_keys)
+    est_low = n_markets * 10
+    est_high = n_markets * 15
+    st.caption(f"Estimated cost: ${est_low}-${est_high} ({n_markets} market{'s' if n_markets > 1 else ''} × ~$10-15 each)")
+
+# ---------------------------------------------------------------
 # Run Button
 # ---------------------------------------------------------------
 
-can_run = all([product_description, product_category, homepage_url, keys_ready])
+can_run = all([product_description, product_category, homepage_url, keys_ready, selected_market_keys])
 
 if st.button(
-    "Run Market Entry Analysis",
+    f"Run Market Entry Analysis ({len(selected_market_keys)} market{'s' if len(selected_market_keys) != 1 else ''})" if selected_market_keys else "Run Market Entry Analysis",
     type="primary",
     disabled=not can_run,
     use_container_width=True,
 ):
-    # Build config dict (same shape as config.yaml)
+    # Build config dict
     known_competitors = [
         url.strip() for url in known_competitors_text.strip().split("\n")
         if url.strip()
@@ -228,7 +246,8 @@ if st.button(
             "homepage_url": homepage_url,
             "pricing_url": pricing_url or "",
         },
-        "target_market": selected_market["key"],
+        "target_markets": selected_market_keys,
+        "target_market": selected_market_keys[0],  # backward compat
         "known_competitors": known_competitors,
         "custom_queries": custom_queries,
         "output": {
@@ -251,24 +270,22 @@ if st.button(
     }
 
     # Run pipeline with progress display
-    step_names = {
-        1: "DISCOVER -- Finding local competitors via geo-targeted SERP",
-        2: "SCRAPE -- Deep-reading competitor websites",
-        3: "ANALYZE -- Running Claude AI competitive analysis",
-        4: "ENRICH -- Layering market-specific intelligence",
-        5: "DELIVER -- Generating Market Entry Brief",
-    }
+    n_markets = len(selected_market_keys)
+    total_steps = n_markets * 5 + (1 if n_markets >= 2 else 0)
 
-    with st.status("Running Market Entry Radar pipeline...", expanded=True) as status:
+    with st.status(f"Running Market Entry Radar for {n_markets} market{'s' if n_markets > 1 else ''}...", expanded=True) as status:
         progress_bar = st.progress(0)
         step_log = st.empty()
 
+        steps_completed = [0]  # mutable counter
+
         def on_progress(step: int, message: str):
-            progress_bar.progress(step / 5)
+            # Estimate progress based on message content
+            progress_bar.progress(min(step / 5, 1.0))
             step_log.markdown(f"**Step {step}/5:** {message}")
 
         try:
-            results = run_pipeline(config, env, progress_callback=on_progress)
+            results = run_multi_market_pipeline(config, env, progress_callback=on_progress)
             progress_bar.progress(1.0)
             status.update(label="Pipeline complete!", state="complete", expanded=False)
         except RuntimeError as e:
@@ -281,33 +298,92 @@ if st.button(
             st.stop()
 
     # Display results
-    st.success(
-        f"Analysis complete! "
-        f"Discovered {len(results['discovery_data']['competitors'])} competitors, "
-        f"scraped {results['scrape_data']['success_count']} pages."
-    )
+    markets = results["markets"]
+    per_market = results["per_market"]
 
-    # Read and display the report
-    report_path = results["report_data"]["report_path"]
-    try:
-        report_content = Path(report_path).read_text(encoding="utf-8")
+    st.success(f"Analysis complete for {len(markets)} market{'s' if len(markets) > 1 else ''}!")
 
+    # Cross-market comparison (show first if available)
+    if results.get("comparison"):
+        comparison_path = results["comparison"]["comparison_path"]
+        try:
+            comparison_content = Path(comparison_path).read_text(encoding="utf-8")
+
+            st.divider()
+            st.subheader("Cross-Market Comparison")
+            st.markdown(f"*Which market to enter first and why*")
+
+            st.download_button(
+                label="Download Comparison Report (Markdown)",
+                data=comparison_content,
+                file_name=Path(comparison_path).name,
+                mime="text/markdown",
+                use_container_width=True,
+            )
+
+            with st.expander("View Cross-Market Comparison", expanded=True):
+                st.markdown(comparison_content)
+        except FileNotFoundError:
+            st.warning(f"Comparison report not found at {comparison_path}")
+
+    # Per-market reports in tabs
+    if len(markets) > 1:
         st.divider()
-        st.subheader("Market Entry Brief")
+        st.subheader("Individual Market Reports")
+        tabs = st.tabs([m.upper() for m in markets])
 
-        # Download button
-        st.download_button(
-            label="Download Report (Markdown)",
-            data=report_content,
-            file_name=Path(report_path).name,
-            mime="text/markdown",
-            use_container_width=True,
+        for tab, market in zip(tabs, markets):
+            with tab:
+                result = per_market[market]
+                st.markdown(
+                    f"**{market.upper()}**: "
+                    f"{len(result['discovery_data']['competitors'])} competitors discovered, "
+                    f"{result['scrape_data']['success_count']} pages scraped"
+                )
+
+                report_path = result["report_data"]["report_path"]
+                try:
+                    report_content = Path(report_path).read_text(encoding="utf-8")
+
+                    st.download_button(
+                        label=f"Download {market.upper()} Report (Markdown)",
+                        data=report_content,
+                        file_name=Path(report_path).name,
+                        mime="text/markdown",
+                        use_container_width=True,
+                        key=f"download_{market}",
+                    )
+
+                    st.markdown(report_content)
+                except FileNotFoundError:
+                    st.warning(f"Report not found at {report_path}")
+    else:
+        # Single market -- show inline
+        market = markets[0]
+        result = per_market[market]
+        st.markdown(
+            f"Discovered {len(result['discovery_data']['competitors'])} competitors, "
+            f"scraped {result['scrape_data']['success_count']} pages."
         )
 
-        # Render the report
-        st.markdown(report_content)
-    except FileNotFoundError:
-        st.warning(f"Report file not found at {report_path}")
+        report_path = result["report_data"]["report_path"]
+        try:
+            report_content = Path(report_path).read_text(encoding="utf-8")
+
+            st.divider()
+            st.subheader("Market Entry Brief")
+
+            st.download_button(
+                label="Download Report (Markdown)",
+                data=report_content,
+                file_name=Path(report_path).name,
+                mime="text/markdown",
+                use_container_width=True,
+            )
+
+            st.markdown(report_content)
+        except FileNotFoundError:
+            st.warning(f"Report file not found at {report_path}")
 
 elif not can_run:
     missing_fields = []
@@ -317,6 +393,8 @@ elif not can_run:
         missing_fields.append("Product Category")
     if not homepage_url:
         missing_fields.append("Homepage URL")
+    if not selected_market_keys:
+        missing_fields.append("Target Market(s)")
     if not keys_ready:
         missing_fields.append("API Keys (see sidebar)")
     st.info(f"Fill in required fields to run: {', '.join(missing_fields)}")
@@ -327,7 +405,7 @@ elif not can_run:
 
 st.divider()
 st.caption(
-    "Built by [Dvir Sharon](https://linkedin.com/in/dvir-sharon) | "
+    "Built by [Dvir Sharon](https://www.linkedin.com/in/dvirsharon/) | "
     "Powered by [Bright Data](https://brightdata.com) + "
     "[Anthropic Claude](https://anthropic.com) | "
     "Built with [Claude Code](https://claude.ai/claude-code)"

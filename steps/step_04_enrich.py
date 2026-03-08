@@ -28,7 +28,7 @@ You are given:
 2. A market intelligence profile with hard data about the target country (buyer behavior, sales cycles, regulations, cultural norms)
 3. The user's product information
 
-Your job is to produce TWO sections:
+Your job is to produce FOUR sections:
 
 ## LOCALIZATION WARNINGS
 Specific conflicts between the user's current approach and local market norms. Be very concrete.
@@ -39,23 +39,50 @@ Example:
 - **Pricing Model**: Your site shows monthly per-seat pricing. In Japan, 65% of enterprise buyers prefer annual contracts. 3 of your top 5 local competitors offer annual-only pricing. Recommendation: Add annual pricing with 15-20% discount as the default display.
 
 ## MARKET ENTRY RECOMMENDATIONS
-A prioritized 90-day action plan based on the competitive landscape + market intelligence.
+A prioritized 90-day action plan. Every action must be specific enough that someone could execute it without asking follow-up questions.
 
 Format as three phases:
 ### Phase 1: Weeks 1-4 (Foundation)
-- 3-5 specific actions, each with rationale from the data
+- 5-7 specific actions, each with rationale from the data
+- USE ACTUAL NAMES from the market profile: specific companies to partner with, specific platforms to list on, specific certifications to pursue, specific job titles to hire
+- NOT "find a local partner" but "approach [Company X] or [Company Y] from the market profile's channel strategy section"
+- NOT "ensure regulatory compliance" but "register for [specific certification], file [specific paperwork], implement [specific requirement]"
+- NOT "build a local team" but "hire a [specific language]-speaking [specific role] with [specific experience]"
 
 ### Phase 2: Weeks 5-8 (Launch)
-- 3-5 specific actions
+- 5-7 specific actions (same level of specificity)
 
 ### Phase 3: Weeks 9-12 (Optimize)
-- 3-5 specific actions
+- 5-7 specific actions (same level of specificity)
+
+## LAUNCH READINESS CHECKLIST
+A binary yes/no checklist of everything that must be true BEFORE entering this market. Pull items from the localization warnings and market intelligence profile.
+
+Format as:
+- [ ] **[Item]**: [Why it's required]. Estimated effort: [time]. Priority: [Critical/High/Medium].
+
+Include at minimum:
+- Website localization requirements (language, currency display, payment methods)
+- Legal/regulatory requirements (data residency, entity registration, certifications)
+- Team requirements (local hires, language support, timezone coverage)
+- Technology requirements (local payment integration, CDN/hosting, compliance)
+- Partnership requirements (channel partners, resellers, marketplace listings)
+- Content requirements (localized content, local case studies, translated documentation)
+
+## SALES PLAYBOOK NOTES
+Based on the market intelligence profile, provide tactical guidance for the sales team:
+- How to structure the first meeting (what the local buyer expects)
+- Decision-making process (who's involved, how long it takes, what kills deals)
+- Pricing negotiation norms (do they negotiate? how much? what leverage do they have?)
+- What competitors will say about you (and how to counter it)
+- Trust-building tactics specific to this market (not generic "build relationships")
 
 Rules:
 - Every recommendation must cite specific data from the competitive analysis or market profile
 - Do not give generic advice like "localize your website." Be specific: WHAT to localize, HOW, and WHY based on competitive evidence
 - If a competitor is doing something well that the user should copy, name the competitor
 - If a market norm conflicts with standard US SaaS practices, flag it explicitly with the specific data point
+- Use actual company names, platform names, certification names from the market profile. No placeholders.
 - Use "--" instead of em dashes. Never use the em dash character.
 """
 

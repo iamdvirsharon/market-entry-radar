@@ -40,6 +40,16 @@ Identify positioning angles that NO competitor currently owns:
 
 3-5 bullet points with the most important findings for someone entering this market.
 
+### Recommended Positioning for Market Entrant
+
+Based on the competitive landscape above, give the user a specific positioning recommendation:
+
+1. **Positioning angle to take**: Which specific angle should they own? Not "differentiate on X" but "Position as the [specific claim] for [specific buyer segment] because [evidence from the analysis]."
+2. **Value prop language**: Write the actual headline they should use on their localized landing page. Not a suggestion, the actual words.
+3. **Competitor to position against**: Which competitor should they directly compare themselves to, and what's the wedge? "Position against [Competitor X] by emphasizing [specific gap they leave open]. Their weakness is [evidence from scraped data]."
+4. **What to copy**: Which competitor's approach is worth replicating and why? "Copy [Competitor Y]'s approach to [specific tactic] because [reason]."
+5. **Positioning to avoid**: Which angles are overcrowded? "Do NOT position on [angle] because [X] competitors already own it and they have [specific advantages]."
+
 ## Rules
 
 - Use "--" instead of em dashes. Never use the em dash character.
