@@ -44,7 +44,7 @@ BANNER = """
                    [bold white]R  A  D  A  R[/bold white]
 [/bold cyan]
 [dim]Regional GTM Intelligence Pipeline
-Powered by Bright Data + Claude[/dim]
+Powered by Bright Data + Claude/Gemini[/dim]
 """
 
 
@@ -87,26 +87,48 @@ def load_env() -> dict:
     """Load and validate environment variables."""
     load_dotenv(PROJECT_ROOT / ".env")
 
-    # Required keys
-    required_vars = ["BRIGHT_DATA_API_KEY", "ANTHROPIC_API_KEY"]
-
     env = {}
-    missing = []
-    for var in required_vars:
-        val = os.getenv(var)
-        if not val or val.startswith("your_"):
-            missing.append(var)
-        else:
-            env[var] = val
 
-    if missing:
-        console.print(f"[red]Error: Missing required API keys: {', '.join(missing)}[/red]")
+    # Bright Data API key (always required)
+    bd_key = os.getenv("BRIGHT_DATA_API_KEY")
+    if not bd_key or bd_key.startswith("your_"):
+        console.print("[red]Error: Missing BRIGHT_DATA_API_KEY[/red]")
         console.print("[dim]Copy .env.example to .env and add your API keys.[/dim]")
         sys.exit(1)
+    env["BRIGHT_DATA_API_KEY"] = bd_key
 
-    # Optional zone names with defaults
+    # Bright Data mode: SDK (default) or legacy zones
+    env["BD_USE_SDK"] = os.getenv("BD_USE_SDK", "true")
+
+    # Optional zone names (only needed in legacy mode)
     env["BRIGHT_DATA_SERP_ZONE"] = os.getenv("BRIGHT_DATA_SERP_ZONE", "serp_api1")
     env["BRIGHT_DATA_UNLOCKER_ZONE"] = os.getenv("BRIGHT_DATA_UNLOCKER_ZONE", "web_unlocker1")
+
+    # LLM provider: claude (default) or gemini
+    llm_provider = os.getenv("LLM_PROVIDER", "claude").lower()
+    env["LLM_PROVIDER"] = llm_provider
+
+    # LLM API key -- provider-specific
+    if llm_provider == "gemini":
+        llm_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_AI_API_KEY")
+        if not llm_key or llm_key.startswith("your_"):
+            console.print("[red]Error: Missing GEMINI_API_KEY (LLM_PROVIDER is set to 'gemini')[/red]")
+            console.print("[dim]Get a free API key at https://aistudio.google.com/apikey[/dim]")
+            sys.exit(1)
+        env["LLM_API_KEY"] = llm_key
+    else:
+        llm_key = os.getenv("ANTHROPIC_API_KEY")
+        if not llm_key or llm_key.startswith("your_"):
+            console.print("[red]Error: Missing ANTHROPIC_API_KEY[/red]")
+            console.print("[dim]Get your key at https://console.anthropic.com[/dim]")
+            sys.exit(1)
+        env["LLM_API_KEY"] = llm_key
+        env["ANTHROPIC_API_KEY"] = llm_key  # backward compat
+
+    # LLM model override (optional -- defaults set per provider)
+    llm_model = os.getenv("LLM_MODEL", "")
+    if llm_model:
+        env["LLM_MODEL"] = llm_model
 
     return env
 
@@ -117,6 +139,17 @@ def main():
 
     config = load_config()
     env = load_env()
+
+    # Merge config.yaml LLM settings into env (config overrides defaults, env vars override config)
+    advanced = config.get("advanced", {})
+    if "LLM_PROVIDER" not in env or env["LLM_PROVIDER"] == "claude":
+        config_provider = advanced.get("llm_provider", "")
+        if config_provider and not os.getenv("LLM_PROVIDER"):
+            env["LLM_PROVIDER"] = config_provider
+    if "LLM_MODEL" not in env:
+        config_model = advanced.get("llm_model", "") or advanced.get("claude_model", "")
+        if config_model:
+            env["LLM_MODEL"] = config_model
 
     display_config_panel(config)
 

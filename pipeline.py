@@ -132,7 +132,8 @@ def run_pipeline(
     _notify(2, f"[{market}] Scraped {scrape_data['success_count']} pages")
 
     # STEP 3: ANALYZE
-    _notify(3, f"[{market}] Running Claude AI analysis (positioning, pricing, content gaps)...")
+    provider_name = env.get("LLM_PROVIDER", "claude").capitalize()
+    _notify(3, f"[{market}] Running {provider_name} AI analysis (positioning, pricing, content gaps)...")
     try:
         analysis_data = step_03_analyze.run(config, env, discovery_data, scrape_data)
     except RuntimeError:

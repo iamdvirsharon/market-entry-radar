@@ -14,13 +14,11 @@ Output: Localization warnings and market-specific recommendations.
 import os
 from pathlib import Path
 
-import anthropic
 import yaml
-from anthropic import Anthropic
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from steps.error_utils import format_claude_error
+from steps.llm_client import call_llm
 
 console = Console()
 
@@ -222,7 +220,6 @@ def run(config: dict, env: dict, analysis_data: dict, scrape_data: dict) -> dict
         dict with enrichment output (localization warnings + recommendations)
     """
     market = config["target_market"].lower()
-    model = config["advanced"]["claude_model"]
     category = config["product"]["category"]
     product_desc = config["product"]["description"]
 
@@ -252,15 +249,18 @@ TARGET MARKET: {market.upper()}
 
 Based on the competitive analysis and market intelligence profile above, produce the Localization Warnings and Market Entry Recommendations as described in your instructions."""
 
-    client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
-
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
         console=console,
     ) as progress:
         task = progress.add_task("Generating market-specific insights...", total=1)
-        enrichment = _call_claude(client, model, user_content)
+        enrichment = call_llm(
+            env=env,
+            system_prompt=ENRICHMENT_SYSTEM_PROMPT,
+            user_content=user_content,
+            step_name="Step 4: ENRICH",
+        )
         progress.update(task, completed=1)
 
     console.print("  [green]Market enrichment complete[/green]")
@@ -279,15 +279,3 @@ Based on the competitive analysis and market intelligence profile above, produce
     }
 
 
-def _call_claude(client: Anthropic, model: str, user_content: str) -> str:
-    """Make a Claude API call."""
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=8192,
-            system=ENRICHMENT_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_content}],
-        )
-        return response.content[0].text
-    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
-        raise RuntimeError(format_claude_error(e, "Step 4: ENRICH", model)) from e

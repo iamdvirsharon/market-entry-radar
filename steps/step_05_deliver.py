@@ -12,11 +12,9 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-import anthropic
-from anthropic import Anthropic
 from rich.console import Console
 
-from steps.error_utils import format_claude_error
+from steps.llm_client import call_llm
 
 console = Console()
 
@@ -187,7 +185,6 @@ def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict, analys
         dict with report path and metadata
     """
     market = config["target_market"].lower()
-    model = config["advanced"]["claude_model"]
     category = config["product"]["category"]
     product_desc = config["product"]["description"]
 
@@ -249,28 +246,21 @@ SCRAPING DATA:
     console.print(f"  Total context for report: [bold]{len(full_context):,} chars[/bold]")
 
     # Generate the report
-    client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
-
     console.print("  Generating report (this may take 30-60 seconds)...")
 
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=16384,
-            system=REPORT_SYSTEM_PROMPT,
-            messages=[{
-                "role": "user",
-                "content": f"""Here is the complete analysis pipeline output. Synthesize this into the Market Entry Brief format described in your instructions.
+    user_content = f"""Here is the complete analysis pipeline output. Synthesize this into the Market Entry Brief format described in your instructions.
 
 {full_context}
 
-Generate the full Market Entry Brief now.""",
-            }],
-        )
-    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
-        raise RuntimeError(format_claude_error(e, "Step 5: DELIVER (report)", model)) from e
+Generate the full Market Entry Brief now."""
 
-    report = response.content[0].text
+    report = call_llm(
+        env=env,
+        system_prompt=REPORT_SYSTEM_PROMPT,
+        user_content=user_content,
+        max_tokens=16384,
+        step_name="Step 5: DELIVER (report)",
+    )
 
     # Save the report
     output_dir = Path(__file__).parent.parent / config["output"]["directory"]
@@ -380,7 +370,6 @@ def run_comparison(config: dict, env: dict, markets: list, all_results: dict) ->
     Returns:
         dict with comparison report path
     """
-    model = config["advanced"]["claude_model"]
     category = config["product"]["category"]
     product_desc = config["product"]["description"]
 
@@ -424,26 +413,19 @@ def run_comparison(config: dict, env: dict, markets: list, all_results: dict) ->
     console.print(f"  Total context for comparison: [bold]{len(full_context):,} chars[/bold]")
     console.print("  Generating comparison (this may take 30-60 seconds)...")
 
-    client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
-
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=8192,
-            system=COMPARISON_SYSTEM_PROMPT,
-            messages=[{
-                "role": "user",
-                "content": f"""Here are the individual Market Entry Briefs for each market. Compare them and produce the Cross-Market Comparison.
+    user_content = f"""Here are the individual Market Entry Briefs for each market. Compare them and produce the Cross-Market Comparison.
 
 {full_context}
 
-Generate the Cross-Market Comparison now.""",
-            }],
-        )
-    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
-        raise RuntimeError(format_claude_error(e, "Step 5: DELIVER (comparison)", model)) from e
+Generate the Cross-Market Comparison now."""
 
-    comparison = response.content[0].text
+    comparison = call_llm(
+        env=env,
+        system_prompt=COMPARISON_SYSTEM_PROMPT,
+        user_content=user_content,
+        max_tokens=8192,
+        step_name="Step 5: DELIVER (comparison)",
+    )
 
     # Save comparison report
     output_dir = Path(__file__).parent.parent / config.get("output", {}).get("directory", "output")

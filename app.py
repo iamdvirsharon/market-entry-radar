@@ -65,43 +65,69 @@ AVAILABLE_MARKETS = _get_available_markets()
 # ---------------------------------------------------------------
 
 with st.sidebar:
-    st.title("API Keys")
+    st.title("Configuration")
     st.caption("Keys are stored in memory only -- never saved to disk.")
 
+    # --- Bright Data ---
+    st.subheader("Bright Data")
     bright_data_key = st.text_input(
         "Bright Data API Key",
         type="password",
         help="Get yours at https://brightdata.com/cp/setting/api_token",
     )
-    anthropic_key = st.text_input(
-        "Anthropic API Key",
-        type="password",
-        help="Get yours at https://console.anthropic.com",
-    )
 
-    with st.expander("Zone Configuration (advanced)"):
-        st.caption("Default zone names work for most setups. Only change if you've customized your Bright Data zones.")
-        serp_zone = st.text_input(
-            "SERP Zone Name",
-            value="serp_api1",
+    bd_mode = st.radio(
+        "Mode",
+        ["SDK (recommended)", "Legacy (custom zones)"],
+        horizontal=True,
+        help="SDK mode auto-creates zones and uses the free tier (5,000 req/month). Legacy mode uses your existing zone names.",
+    )
+    bd_use_sdk = bd_mode.startswith("SDK")
+
+    if not bd_use_sdk:
+        serp_zone = st.text_input("SERP Zone Name", value="serp_api1")
+        unlocker_zone = st.text_input("Web Unlocker Zone Name", value="web_unlocker1")
+    else:
+        serp_zone = ""
+        unlocker_zone = ""
+
+    st.divider()
+
+    # --- LLM Provider ---
+    st.subheader("LLM Provider")
+    llm_provider = st.selectbox(
+        "Provider",
+        ["Claude (Anthropic)", "Gemini (Google AI)"],
+        help="Gemini has a free tier -- no credit card needed",
+    )
+    llm_provider_key = "claude" if llm_provider.startswith("Claude") else "gemini"
+
+    if llm_provider_key == "claude":
+        llm_api_key = st.text_input(
+            "Anthropic API Key",
+            type="password",
+            help="Get yours at https://console.anthropic.com",
         )
-        unlocker_zone = st.text_input(
-            "Web Unlocker Zone Name",
-            value="web_unlocker1",
+    else:
+        llm_api_key = st.text_input(
+            "Google AI API Key",
+            type="password",
+            help="Get a free key at https://aistudio.google.com/apikey",
         )
 
     st.divider()
 
-    # Key status -- only check the 2 main keys
-    keys_ready = all([bright_data_key, anthropic_key])
+    # Key status
+    keys_ready = all([bright_data_key, llm_api_key])
     if keys_ready:
         st.success("API keys configured")
     else:
         missing = []
         if not bright_data_key:
             missing.append("Bright Data API Key")
-        if not anthropic_key:
-            missing.append("Anthropic API Key")
+        if not llm_api_key:
+            provider_label = "Anthropic" if llm_provider_key == "claude" else "Google AI"
+            missing.append(f"{provider_label} API Key")
         st.warning(f"Missing: {', '.join(missing)}")
 
 # ---------------------------------------------------------------
@@ -109,7 +135,7 @@ with st.sidebar:
 # ---------------------------------------------------------------
 
 st.title("Market Entry Radar")
-st.markdown("**Regional GTM Intelligence Pipeline** -- Powered by Bright Data + Claude")
+st.markdown("**Regional GTM Intelligence Pipeline** -- Powered by Bright Data + Claude/Gemini")
 st.markdown("Paste your homepage URL and pick a market. The tool figures out the rest.")
 
 st.divider()
@@ -198,11 +224,18 @@ with st.expander("Advanced Settings"):
         max_queries = st.slider("Max Queries", 10, 80, 40, help="More = better discovery, higher API cost")
     with adv_col2:
         request_delay = st.slider("Request Delay (seconds)", 0.5, 3.0, 1.0, 0.5, help="Delay between API calls")
-        claude_model = st.selectbox(
-            "Claude Model",
-            ["claude-sonnet-4-20250514", "claude-haiku-4-5-20251001"],
-            help="Sonnet is recommended for best quality",
-        )
+        if llm_provider_key == "claude":
+            llm_model = st.selectbox(
+                "Claude Model",
+                ["claude-sonnet-4-20250514", "claude-haiku-4-5-20251001"],
+                help="Sonnet is recommended for best quality",
+            )
+        else:
+            llm_model = st.selectbox(
+                "Gemini Model",
+                ["gemini-2.5-flash-preview-04-17", "gemini-2.0-flash", "gemini-2.5-pro-preview-05-06"],
+                help="Flash is fast and free. Pro is highest quality.",
+            )
 
 st.divider()
 
@@ -212,9 +245,12 @@ st.divider()
 
 if selected_market_keys:
     n_markets = len(selected_market_keys)
-    est_low = n_markets * 10
-    est_high = n_markets * 15
-    st.caption(f"Estimated cost: ${est_low}-${est_high} ({n_markets} market{'s' if n_markets > 1 else ''} x ~$10-15 each)")
+    if llm_provider_key == "gemini":
+        st.caption(f"Estimated cost: ~$3-5/market for Bright Data ({n_markets} market{'s' if n_markets > 1 else ''}). Gemini LLM calls are free on the free tier.")
+    else:
+        est_low = n_markets * 10
+        est_high = n_markets * 15
+        st.caption(f"Estimated cost: ${est_low}-${est_high} ({n_markets} market{'s' if n_markets > 1 else ''} x ~$10-15 each)")
 
 # ---------------------------------------------------------------
 # Run Button
@@ -258,16 +294,24 @@ if st.button(
             "max_competitors": max_competitors,
             "max_queries": max_queries,
             "request_delay": request_delay,
-            "claude_model": claude_model,
+            "llm_provider": llm_provider_key,
+            "llm_model": llm_model,
+            "claude_model": llm_model,  # backward compat
         },
     }
 
     env = {
         "BRIGHT_DATA_API_KEY": bright_data_key,
-        "BRIGHT_DATA_SERP_ZONE": serp_zone,
-        "BRIGHT_DATA_UNLOCKER_ZONE": unlocker_zone,
-        "ANTHROPIC_API_KEY": anthropic_key,
+        "BD_USE_SDK": "true" if bd_use_sdk else "false",
+        "BRIGHT_DATA_SERP_ZONE": serp_zone or "serp_api1",
+        "BRIGHT_DATA_UNLOCKER_ZONE": unlocker_zone or "web_unlocker1",
+        "LLM_PROVIDER": llm_provider_key,
+        "LLM_API_KEY": llm_api_key,
+        "LLM_MODEL": llm_model,
     }
+    # Backward compat for any code still reading ANTHROPIC_API_KEY
+    if llm_provider_key == "claude":
+        env["ANTHROPIC_API_KEY"] = llm_api_key
 
     # Run pipeline with progress display
     n_markets = len(selected_market_keys)
@@ -405,6 +449,6 @@ st.divider()
 st.caption(
     "Built by [Dvir Sharon](https://www.linkedin.com/in/dvirsharon/) | "
     "Powered by [Bright Data](https://brightdata.com) + "
-    "[Anthropic Claude](https://anthropic.com) | "
+    "[Claude](https://anthropic.com)/[Gemini](https://aistudio.google.com) | "
     "Built with [Claude Code](https://claude.ai/claude-code)"
 )

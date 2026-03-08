@@ -1,8 +1,8 @@
 """
 Step 0: DETECT -- Auto-detect product info from homepage URL.
 
-Scrapes the homepage using Bright Data Web Unlocker and sends the content
-to Claude to extract product name, description, and category.
+Scrapes the homepage and sends the content to an LLM to extract
+product name, description, and category.
 
 This step only runs if the user did not provide a description or category.
 It keeps the UI simple: paste your homepage URL, and the tool figures out
@@ -14,12 +14,11 @@ Output: dict with detected product info (product_name, description, category).
 import json
 import re
 
-import anthropic
-from anthropic import Anthropic
 from rich.console import Console
 
-from steps.step_02_scrape import _scrape_url, _clean_markdown
-from steps.error_utils import format_claude_error
+from steps.bright_data_client import scrape_as_markdown, format_scrape_error
+from steps.step_02_scrape import _clean_markdown
+from steps.llm_client import call_llm, get_fast_model
 
 console = Console()
 
@@ -41,7 +40,7 @@ Rules:
 
 def run(homepage_url: str, env: dict) -> dict:
     """
-    Scrape homepage and detect product info using Claude.
+    Scrape homepage and detect product info using LLM.
 
     Args:
         homepage_url: The product's homepage URL
@@ -50,58 +49,37 @@ def run(homepage_url: str, env: dict) -> dict:
     Returns:
         dict with keys: product_name, description, category
     """
-    api_key = env["BRIGHT_DATA_API_KEY"]
-    zone = env["BRIGHT_DATA_UNLOCKER_ZONE"]
-
     console.print("\n[bold cyan]STEP 0: DETECT[/bold cyan] -- Auto-detecting product from homepage\n")
     console.print(f"  Scraping: [bold]{homepage_url}[/bold]")
 
     # Scrape the homepage
-    result = _scrape_url(api_key, zone, homepage_url)
+    result = scrape_as_markdown(env, homepage_url)
 
     if not result.get("success"):
         error_detail = result.get("error", "Unknown error")
-        raise RuntimeError(
-            "\n"
-            "============================================================\n"
-            "  HOMEPAGE SCRAPE ERROR -- Could not read your homepage\n"
-            "============================================================\n"
-            "\n"
-            f"  URL: {homepage_url}\n"
-            f"  Error: {error_detail}\n"
-            "\n"
-            "  --- Fix it ---\n"
-            "  1. Verify the URL is correct and accessible in a browser\n"
-            "  2. Check your Bright Data Web Unlocker zone is active\n"
-            "  3. Or provide product description and category manually\n"
-            "\n"
-            "  Copy this entire block and paste it to an AI assistant for help.\n"
-            "============================================================\n"
-        )
+        raise RuntimeError(format_scrape_error(homepage_url, error_detail))
 
     content = _clean_markdown(result["content"])
     console.print(f"  Scraped: [bold]{len(content):,} chars[/bold]")
 
-    # Send to Claude for detection
+    # Send to LLM for detection
     console.print("  Detecting product info...")
 
-    try:
-        client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
-        response = client.messages.create(
-            model="claude-haiku-4-5-20251001",  # Haiku for speed + cost -- this is a simple extraction
-            max_tokens=256,
-            system=DETECT_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": f"Homepage content:\n\n{content[:8000]}"}],
-        )
-        raw = response.content[0].text
-    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
-        raise RuntimeError(format_claude_error(e, "Step 0: DETECT", "claude-haiku-4-5-20251001")) from e
+    fast_model = get_fast_model(env)
+    raw = call_llm(
+        env=env,
+        system_prompt=DETECT_SYSTEM_PROMPT,
+        user_content=f"Homepage content:\n\n{content[:8000]}",
+        max_tokens=256,
+        model_override=fast_model,
+        step_name="Step 0: DETECT",
+    )
 
     # Parse JSON response
     try:
         detected = json.loads(raw)
     except json.JSONDecodeError:
-        # Try to extract JSON from response if Claude added extra text
+        # Try to extract JSON from response if LLM added extra text
         match = re.search(r'\{[^}]+\}', raw)
         if match:
             try:

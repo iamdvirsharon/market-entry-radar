@@ -55,5 +55,10 @@ advanced:
   max_queries: 40
   # Delay between API calls in seconds (be nice to the APIs)
   request_delay: 1.0
-  # Claude model to use for analysis
+  # LLM provider: "claude" or "gemini" (Gemini has a free tier)
+  llm_provider: "claude"
+  # LLM model (leave empty for provider default)
+  # Claude: "claude-sonnet-4-20250514" | Gemini: "gemini-2.5-flash-preview-04-17"
+  # llm_model: ""
+  # Legacy field -- still works, but llm_provider + llm_model is preferred
   claude_model: "claude-sonnet-4-20250514"

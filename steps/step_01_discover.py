@@ -19,6 +19,8 @@ from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich.table import Table
 
+from steps.bright_data_client import search_serp, is_sdk_mode
+
 console = Console()
 
 # Search engine routing per market
@@ -353,8 +355,16 @@ def run(config: dict, env: dict) -> dict:
 
         for engine_config in engines:
             for query in queries:
-                search_url = _build_search_url(engine_config, query)
-                results = _call_serp_api(api_key, zone, search_url)
+                # SDK mode: pass query + engine directly
+                # Legacy mode: build URL and pass it
+                if is_sdk_mode(env):
+                    results = search_serp(
+                        env, query, engine=engine_config["engine"],
+                        gl=engine_config.get("gl"), hl=engine_config.get("hl"),
+                    )
+                else:
+                    search_url = _build_search_url(engine_config, query)
+                    results = search_serp(env, query, search_url=search_url)
 
                 if results.get("_error"):
                     api_failures += 1

@@ -13,12 +13,10 @@ import json
 import os
 from pathlib import Path
 
-import anthropic
-from anthropic import Anthropic
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from steps.error_utils import format_claude_error
+from steps.llm_client import call_llm
 
 console = Console()
 
@@ -31,20 +29,6 @@ def _load_prompt(prompt_name: str) -> str:
         return prompt_file.read_text(encoding="utf-8")
     else:
         raise FileNotFoundError(f"Prompt template not found: {prompt_file}")
-
-
-def _call_claude(client: Anthropic, model: str, system_prompt: str, user_content: str) -> str:
-    """Make a Claude API call with structured prompts."""
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=8192,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_content}],
-        )
-        return response.content[0].text
-    except (anthropic.AuthenticationError, anthropic.RateLimitError, anthropic.APIError) as e:
-        raise RuntimeError(format_claude_error(e, "Step 3: ANALYZE", model)) from e
 
 
 def _prepare_competitor_summary(scraped_data: dict) -> str:
@@ -91,7 +75,7 @@ def _prepare_own_site_summary(scraped_data: dict) -> str:
 
 
 def _run_positioning_analysis(
-    client: Anthropic, model: str, competitor_summary: str, own_site_summary: str, market: str, category: str
+    env: dict, competitor_summary: str, own_site_summary: str, market: str, category: str
 ) -> str:
     """Analysis A: Positioning Matrix."""
     system_prompt = _load_prompt("positioning_analysis")
@@ -105,11 +89,11 @@ PRODUCT CATEGORY: {category}
 
 Analyze all competitors above and produce the Positioning Matrix as described in your instructions."""
 
-    return _call_claude(client, model, system_prompt, user_content)
+    return call_llm(env=env, system_prompt=system_prompt, user_content=user_content, step_name="Step 3: ANALYZE (positioning)")
 
 
 def _run_pricing_analysis(
-    client: Anthropic, model: str, competitor_summary: str, own_site_summary: str, market: str, category: str
+    env: dict, competitor_summary: str, own_site_summary: str, market: str, category: str
 ) -> str:
     """Analysis B: Pricing Intelligence."""
     system_prompt = _load_prompt("pricing_analysis")
@@ -123,11 +107,11 @@ PRODUCT CATEGORY: {category}
 
 Analyze all competitor pricing data above and produce the Pricing Benchmark as described in your instructions."""
 
-    return _call_claude(client, model, system_prompt, user_content)
+    return call_llm(env=env, system_prompt=system_prompt, user_content=user_content, step_name="Step 3: ANALYZE (pricing)")
 
 
 def _run_content_gap_analysis(
-    client: Anthropic, model: str, competitor_summary: str, own_site_summary: str,
+    env: dict, competitor_summary: str, own_site_summary: str,
     discovery_data: dict, market: str, category: str
 ) -> str:
     """Analysis C: Content & SEO Gap Map."""
@@ -158,7 +142,7 @@ PRODUCT CATEGORY: {category}
 
 Analyze the competitive content landscape and produce the Content & SEO Gap Map as described in your instructions."""
 
-    return _call_claude(client, model, system_prompt, user_content)
+    return call_llm(env=env, system_prompt=system_prompt, user_content=user_content, step_name="Step 3: ANALYZE (content gaps)")
 
 
 def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict) -> dict:
@@ -174,13 +158,10 @@ def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict) -> dic
     Returns:
         dict with three analysis outputs
     """
-    model = config["advanced"]["claude_model"]
     market = config["target_market"].lower()
     category = config["product"]["category"]
 
     console.print("\n[bold cyan]STEP 3: ANALYZE[/bold cyan] -- Turning raw data into competitive intelligence\n")
-
-    client = Anthropic(api_key=env["ANTHROPIC_API_KEY"])
 
     # Prepare data summaries
     scraped = scrape_data["scraped_data"]
@@ -201,7 +182,7 @@ def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict) -> dic
         task_a = progress.add_task("Running positioning analysis...", total=1)
         console.print("\n  [yellow]Analysis A:[/yellow] Positioning Matrix")
         analyses["positioning"] = _run_positioning_analysis(
-            client, model, competitor_summary, own_site_summary, market, category
+            env, competitor_summary, own_site_summary, market, category
         )
         progress.update(task_a, completed=1)
         console.print("  [green]Positioning analysis complete[/green]")
@@ -210,7 +191,7 @@ def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict) -> dic
         task_b = progress.add_task("Running pricing analysis...", total=1)
         console.print("  [yellow]Analysis B:[/yellow] Pricing Intelligence")
         analyses["pricing"] = _run_pricing_analysis(
-            client, model, competitor_summary, own_site_summary, market, category
+            env, competitor_summary, own_site_summary, market, category
         )
         progress.update(task_b, completed=1)
         console.print("  [green]Pricing analysis complete[/green]")
@@ -219,7 +200,7 @@ def run(config: dict, env: dict, discovery_data: dict, scrape_data: dict) -> dic
         task_c = progress.add_task("Running content gap analysis...", total=1)
         console.print("  [yellow]Analysis C:[/yellow] Content & SEO Gap Map")
         analyses["content_gaps"] = _run_content_gap_analysis(
-            client, model, competitor_summary, own_site_summary, discovery_data, market, category
+            env, competitor_summary, own_site_summary, discovery_data, market, category
         )
         progress.update(task_c, completed=1)
         console.print("  [green]Content gap analysis complete[/green]")

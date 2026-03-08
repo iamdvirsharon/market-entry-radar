@@ -17,6 +17,8 @@ import requests
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 
+from steps.bright_data_client import scrape_as_markdown
+
 console = Console()
 
 # Pages to scrape per competitor
@@ -32,60 +34,23 @@ def _scrape_url(api_key: str, zone: str, url: str, country: str = None) -> dict:
     """
     Scrape a single URL using Bright Data Web Unlocker.
     Returns Markdown content.
+
+    Note: This is a backward-compatible wrapper. New code should use
+    bright_data_client.scrape_as_markdown() directly.
     """
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}",
+    env = {
+        "BRIGHT_DATA_API_KEY": api_key,
+        "BRIGHT_DATA_UNLOCKER_ZONE": zone,
+        "BD_USE_SDK": "false",  # Legacy mode when called with explicit zone
     }
-
-    payload = {
-        "zone": zone,
-        "url": url,
-        "format": "raw",
-        "data_format": "markdown",
-    }
-
-    # Add country targeting if specified
-    if country:
-        payload["country"] = country
-
-    try:
-        response = requests.post(
-            "https://api.brightdata.com/request",
-            headers=headers,
-            json=payload,
-            timeout=90,
-        )
-
-        if response.status_code == 200:
-            content = response.text
-            # Check if we got meaningful content (not just error page)
-            if len(content) > 200:
-                return {
-                    "success": True,
-                    "content": content,
-                    "url": url,
-                    "content_length": len(content),
-                }
-            else:
-                return {"success": False, "url": url, "error": "Content too short (likely blocked)"}
-        else:
-            return {
-                "success": False,
-                "url": url,
-                "error": f"HTTP {response.status_code}: {response.text[:200]}",
-            }
-    except requests.exceptions.Timeout:
-        return {"success": False, "url": url, "error": "Request timed out (90s)"}
-    except requests.exceptions.RequestException as e:
-        return {"success": False, "url": url, "error": str(e)}
+    return scrape_as_markdown(env, url, country)
 
 
-def _try_page_variants(api_key: str, zone: str, base_url: str, paths: list, country: str, delay: float) -> dict | None:
+def _try_page_variants(env: dict, base_url: str, paths: list, country: str, delay: float) -> dict | None:
     """Try multiple URL paths for a page type, return first success."""
     for path in paths:
         url = base_url.rstrip("/") + path
-        result = _scrape_url(api_key, zone, url, country)
+        result = scrape_as_markdown(env, url, country)
         if result["success"]:
             return result
         time.sleep(delay * 0.5)  # Shorter delay between retries
@@ -134,8 +99,6 @@ def run(config: dict, env: dict, discovery_data: dict) -> dict:
     Returns:
         dict with scraped content per competitor
     """
-    api_key = env["BRIGHT_DATA_API_KEY"]
-    zone = env["BRIGHT_DATA_UNLOCKER_ZONE"]
     market = config["target_market"].lower()
     country = _get_country_code(market)
     delay = config["advanced"]["request_delay"]
@@ -178,11 +141,11 @@ def run(config: dict, env: dict, discovery_data: dict) -> dict:
             progress.update(task, description=f"Scraping own site: {page_name}...")
 
             if page_name == "homepage":
-                result = _scrape_url(api_key, zone, own_url, country)
+                result = scrape_as_markdown(env, own_url, country)
             elif page_name == "pricing" and own_pricing:
-                result = _scrape_url(api_key, zone, own_pricing, country)
+                result = scrape_as_markdown(env, own_pricing, country)
             elif "paths" in page_type:
-                result = _try_page_variants(api_key, zone, own_url, page_type["paths"], country, delay)
+                result = _try_page_variants(env, own_url, page_type["paths"], country, delay)
             else:
                 result = None
 
@@ -221,11 +184,11 @@ def run(config: dict, env: dict, discovery_data: dict) -> dict:
                 page_name = page_type["name"]
 
                 if page_name == "homepage":
-                    result = _scrape_url(api_key, zone, base_url, country)
+                    result = scrape_as_markdown(env, base_url, country)
                 elif "paths" in page_type:
-                    result = _try_page_variants(api_key, zone, base_url, page_type["paths"], country, delay)
+                    result = _try_page_variants(env, base_url, page_type["paths"], country, delay)
                 else:
-                    result = _scrape_url(api_key, zone, base_url.rstrip("/") + "/" + page_name, country)
+                    result = scrape_as_markdown(env, base_url.rstrip("/") + "/" + page_name, country)
 
                 if result and result.get("success"):
                     result["content"] = _clean_markdown(result["content"])
