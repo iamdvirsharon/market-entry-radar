@@ -45,7 +45,7 @@ You can add custom markets by creating a new YAML file in `market_profiles/`.
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/market-entry-radar.git
+git clone https://github.com/iamdvirsharon/market-entry-radar.git
 cd market-entry-radar
 
 # Install dependencies
