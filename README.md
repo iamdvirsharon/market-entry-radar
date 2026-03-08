@@ -4,12 +4,12 @@ I kept doing the same thing every time we evaluated a new market at Bright Data 
 
 You paste your homepage URL, pick a country. The tool does the rest: finds local competitors, reads their sites, and gives you a Market Entry Brief with what to do first.
 
-## What You Get
+## What you get
 
 A full Market Entry Brief with actionable intelligence. Here's a snippet from a real run (project management software → Japan):
 
 <details>
-<summary><strong>Example: Competitive Landscape</strong></summary>
+<summary><strong>Example: Competitive landscape</strong></summary>
 
 > **White space:** No competitor strongly owns "mid-market Japanese companies modernizing from Excel-based project tracking." This is a viable entry position.
 
@@ -24,7 +24,7 @@ A full Market Entry Brief with actionable intelligence. Here's a snippet from a 
 </details>
 
 <details>
-<summary><strong>Example: Pricing Benchmark</strong></summary>
+<summary><strong>Example: Pricing benchmark</strong></summary>
 
 | Competitor | Price Range (JPY) | Price Range (USD) | Free Tier | Annual Discount |
 |---|---|---|---|---|
@@ -37,7 +37,7 @@ A full Market Entry Brief with actionable intelligence. Here's a snippet from a 
 </details>
 
 <details>
-<summary><strong>Example: "Do This Week" Actions</strong></summary>
+<summary><strong>Example: "Do this week" actions</strong></summary>
 
 1. **Register a .co.jp domain and set up a Japanese landing page** -- Use Backlog's layout as reference. 8 of 12 competitors have dedicated JP domains. Time: 2-3 days.
 
@@ -55,7 +55,7 @@ The full report also includes content & SEO gaps, buyer behavior analysis, local
 
 Pick multiple markets and you get individual reports plus a cross-market comparison with a recommended entry sequence.
 
-## Run It
+## Run it
 
 ### GitHub Codespaces (easiest -- nothing to install)
 
@@ -69,7 +69,7 @@ python -m streamlit run app.py
 
 Browser opens. Pick your LLM provider, paste your API keys, pick a market, enter your homepage URL, hit run.
 
-### Run Locally
+### Run locally
 
 ```
 git clone https://github.com/iamdvirsharon/market-entry-radar.git
@@ -86,40 +86,51 @@ Windows users: double-click `start.bat`.
   - [Anthropic Claude](https://console.anthropic.com) -- best quality
   - [Google Gemini](https://aistudio.google.com/apikey) -- free tier, no credit card needed
 
-### CLI Alternative
+### CLI alternative
 
 ```
 cp .env.example .env   # add your API keys
 python run.py           # edit config.yaml first
 ```
 
-## Supported Markets (17)
+## Supported markets (17)
 
-| Market | Search Engines | Profile |
+| Market | Search engines | Profile |
 |---|---|---|
-| United States | Google, Bing | Full |
-| India | Google.co.in, Bing | Full |
-| Canada | Google.ca, Bing | Full |
-| Japan | Google.co.jp, Yahoo Japan | Full |
-| Korea | Naver, Google.co.kr | Full |
-| China | Baidu | Full |
-| Russia | Yandex, Google.ru | Full |
-| Australia | Google.com.au, Bing | Full |
-| Singapore | Google.com.sg, Bing | Full |
-| Germany | Google.de, Bing | Full |
-| UK | Google.co.uk, Bing | Full |
-| France | Google.fr, Bing | Full |
-| Brazil | Google.com.br, Bing | Full |
-| Netherlands | Google.nl, Bing | Full |
-| Israel | Google.co.il, Bing | Full |
-| UAE | Google.ae, Bing | Full |
-| Mexico | Google.com.mx, Bing | Full |
+| :us: United States | Google, Bing | Full |
+| :india: India | Google.co.in, Bing | Full |
+| :canada: Canada | Google.ca, Bing | Full |
+| :jp: Japan | Google.co.jp, Yahoo Japan | Full |
+| :kr: Korea | Naver, Google.co.kr | Full |
+| :cn: China | Baidu | Full |
+| :ru: Russia | Yandex, Google.ru | Full |
+| :australia: Australia | Google.com.au, Bing | Full |
+| :singapore: Singapore | Google.com.sg, Bing | Full |
+| :de: Germany | Google.de, Bing | Full |
+| :gb: UK | Google.co.uk, Bing | Full |
+| :fr: France | Google.fr, Bing | Full |
+| :brazil: Brazil | Google.com.br, Bing | Full |
+| :netherlands: Netherlands | Google.nl, Bing | Full |
+| :israel: Israel | Google.co.il, Bing | Full |
+| :united_arab_emirates: UAE | Google.ae, Bing | Full |
+| :mexico: Mexico | Google.com.mx, Bing | Full |
+
+### Supported platforms
+
+| Platform | Type |
+|---|---|
+| Google | Search engine |
+| Bing | Search engine |
+| Yahoo Japan | Search engine |
+| Naver | Search engine |
+| Baidu | Search engine |
+| Yandex | Search engine |
 
 Add your own by dropping a YAML file in `market_profiles/`.
 
 Pick multiple markets and you get individual reports plus a cross-market comparison.
 
-## What It Costs
+## What it costs
 
 | Component | Per Market | Notes |
 |---|---|---|
@@ -129,14 +140,14 @@ Pick multiple markets and you get individual reports plus a cross-market compari
 | **Total with Claude** | **~$5-13** | |
 | **Total with Gemini** | **~$3-8** | LLM calls are free |
 
-## How It Works
+## How it works
 
-1. **DETECT** -- Scrapes your homepage, auto-detects what your product is
-2. **DISCOVER** -- Runs geo-targeted SERP queries across local search engines
-3. **SCRAPE** -- Deep-reads competitor homepages, pricing pages, features, about pages
-4. **ANALYZE** -- AI analysis: positioning matrix, pricing benchmark, content gaps
-5. **ENRICH** -- Adds market-specific intelligence: buyer behavior, regulations, cultural norms
-6. **DELIVER** -- Synthesizes everything into an actionable Market Entry Brief
+1. **Detect** -- Scrapes your homepage, auto-detects what your product is
+2. **Discover** -- Runs geo-targeted SERP queries across local search engines
+3. **Scrape** -- Deep-reads competitor homepages, pricing pages, features, about pages
+4. **Analyze** -- AI analysis: positioning matrix, pricing benchmark, content gaps
+5. **Enrich** -- Adds market-specific intelligence: buyer behavior, regulations, cultural norms
+6. **Deliver** -- Synthesizes everything into an actionable Market Entry Brief
 
 ## Author
 
